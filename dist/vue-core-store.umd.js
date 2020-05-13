@@ -3176,10 +3176,6 @@ var es_object_to_string = __webpack_require__("d3b7");
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.promise.js
 var es_promise = __webpack_require__("e6cf");
 
-// EXTERNAL MODULE: external {"commonjs":"vue","commonjs2":"vue","root":"Vue"}
-var external_commonjs_vue_commonjs2_vue_root_Vue_ = __webpack_require__("8bbf");
-var external_commonjs_vue_commonjs2_vue_root_Vue_default = /*#__PURE__*/__webpack_require__.n(external_commonjs_vue_commonjs2_vue_root_Vue_);
-
 // CONCATENATED MODULE: ./src/vuex/actions.js
 
 
@@ -3192,9 +3188,7 @@ var external_commonjs_vue_commonjs2_vue_root_Vue_default = /*#__PURE__*/__webpac
 |--------------------------------------------------------------------------
 |
 */
-// import { EventBus } from '@fernandoherlo/vue-core-mixins';
 
-var EventBus = new external_commonjs_vue_commonjs2_vue_root_Vue_default.a();
 /*
 |--------------------------------------------------------------------------
 | CORE vuex actions
@@ -3243,17 +3237,18 @@ var EventBus = new external_commonjs_vue_commonjs2_vue_root_Vue_default.a();
   */
   getBaseAll: function getBaseAll(commit, config) {
     // Degub
-    EventBus.$log.debug('ACTIONS');
-    EventBus.$log.debug('eooo');
-    EventBus.$log.debug(commit);
-    EventBus.$log.debug('s', commit);
-    EventBus.$log.debug(config);
-    EventBus.$log.debug('c', config);
-    EventBus.$log.debug('e', EventBus);
+    vue_core_mixins_common["EventBus"].$log.debug('ACTIONS');
+    vue_core_mixins_common["EventBus"].$log.debug('eooo');
+    vue_core_mixins_common["EventBus"].$log.debug(commit);
+    vue_core_mixins_common["EventBus"].$log.debug('s', commit);
+    vue_core_mixins_common["EventBus"].$log.debug(config);
+    vue_core_mixins_common["EventBus"].$log.debug('c', config);
+    vue_core_mixins_common["EventBus"].$log.debug('e', vue_core_mixins_common["EventBus"]);
+    vue_core_mixins_common["EventBus"].$log.debug('el', vue_core_mixins_common["EventBus"].$log);
     return new Promise(function (resolve
     /*, reject*/
     ) {
-      EventBus.$log.debug('promise --');
+      vue_core_mixins_common["EventBus"].$log.debug('promise --');
 
       var _callback = function _callback(items) {
         commit('RECEIVE_' + config.options.name, {
@@ -3263,7 +3258,7 @@ var EventBus = new external_commonjs_vue_commonjs2_vue_root_Vue_default.a();
         resolve();
       };
 
-      EventBus.$emit('apiGet', config.options.dataUrl, _callback);
+      vue_core_mixins_common["EventBus"].$emit('apiGet', config.options.dataUrl, _callback);
     });
   },
 
@@ -3275,7 +3270,7 @@ var EventBus = new external_commonjs_vue_commonjs2_vue_root_Vue_default.a();
   */
   getByParent: function getByParent(commit, config, id_parent) {
     // Degub
-    EventBus.$log.debug('ACTIONS');
+    vue_core_mixins_common["EventBus"].$log.debug('ACTIONS');
     return new Promise(function (resolve
     /*, reject*/
     ) {
@@ -3305,7 +3300,7 @@ var EventBus = new external_commonjs_vue_commonjs2_vue_root_Vue_default.a();
   */
   getItem: function getItem(commit, config, id) {
     // Degub
-    EventBus.$log.debug('ACTIONS');
+    vue_core_mixins_common["EventBus"].$log.debug('ACTIONS');
     return new Promise(function (resolve
     /*, reject*/
     ) {
@@ -3324,7 +3319,7 @@ var EventBus = new external_commonjs_vue_commonjs2_vue_root_Vue_default.a();
   */
   updateItem: function updateItem(commit, config, item) {
     // Degub
-    EventBus.$log.debug('ACTIONS');
+    vue_core_mixins_common["EventBus"].$log.debug('ACTIONS');
     return new Promise(function (resolve
     /*, reject*/
     ) {
@@ -3335,7 +3330,7 @@ var EventBus = new external_commonjs_vue_commonjs2_vue_root_Vue_default.a();
         resolve();
       };
 
-      EventBus.$emit('apiUpdate', config.options.dataUrl, item, _callback);
+      vue_core_mixins_common["EventBus"].$emit('apiUpdate', config.options.dataUrl, item, _callback);
     });
   },
 
@@ -3347,7 +3342,7 @@ var EventBus = new external_commonjs_vue_commonjs2_vue_root_Vue_default.a();
   */
   saveItem: function saveItem(commit, config, item) {
     // Degub
-    EventBus.$log.debug('ACTIONS');
+    vue_core_mixins_common["EventBus"].$log.debug('ACTIONS');
     return new Promise(function (resolve, reject) {
       var _callback = function _callback(itemApi) {
         if (itemApi) {
@@ -3361,7 +3356,7 @@ var EventBus = new external_commonjs_vue_commonjs2_vue_root_Vue_default.a();
         }
       };
 
-      EventBus.$emit('apiSave', config.options.dataUrl, item, _callback);
+      vue_core_mixins_common["EventBus"].$emit('apiSave', config.options.dataUrl, item, _callback);
     });
   },
 
@@ -3373,7 +3368,7 @@ var EventBus = new external_commonjs_vue_commonjs2_vue_root_Vue_default.a();
   */
   deleteItem: function deleteItem(commit, config, item, id_parent) {
     // Degub
-    EventBus.$log.debug('ACTIONS');
+    vue_core_mixins_common["EventBus"].$log.debug('ACTIONS');
     return new Promise(function (resolve
     /*, reject*/
     ) {
@@ -3386,9 +3381,9 @@ var EventBus = new external_commonjs_vue_commonjs2_vue_root_Vue_default.a();
       };
 
       if (id_parent && config.options.dataFromLaravel) {
-        EventBus.$emit('apiDelete', config.options.dataUrl, item, _callback, null, id_parent);
+        vue_core_mixins_common["EventBus"].$emit('apiDelete', config.options.dataUrl, item, _callback, null, id_parent);
       } else {
-        EventBus.$emit('apiDelete', config.options.dataUrl, item, _callback);
+        vue_core_mixins_common["EventBus"].$emit('apiDelete', config.options.dataUrl, item, _callback);
       }
     });
   },
@@ -3401,7 +3396,7 @@ var EventBus = new external_commonjs_vue_commonjs2_vue_root_Vue_default.a();
   */
   clearItem: function clearItem(commit, config) {
     // Degub
-    EventBus.$log.debug('ACTIONS');
+    vue_core_mixins_common["EventBus"].$log.debug('ACTIONS');
     return new Promise(function (resolve
     /*, reject*/
     ) {
@@ -3421,6 +3416,10 @@ var es_array_splice = __webpack_require__("a434");
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.object.assign.js
 var es_object_assign = __webpack_require__("cca6");
+
+// EXTERNAL MODULE: external {"commonjs":"vue","commonjs2":"vue","root":"Vue"}
+var external_commonjs_vue_commonjs2_vue_root_Vue_ = __webpack_require__("8bbf");
+var external_commonjs_vue_commonjs2_vue_root_Vue_default = /*#__PURE__*/__webpack_require__.n(external_commonjs_vue_commonjs2_vue_root_Vue_);
 
 // CONCATENATED MODULE: ./src/vuex/mutations.js
 

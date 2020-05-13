@@ -4,9 +4,7 @@
 |--------------------------------------------------------------------------
 |
 */
-// import { EventBus } from '@fernandoherlo/vue-core-mixins';
-import Vue from 'vue'
-const EventBus = new Vue()
+import { EventBus } from '@fernandoherlo/vue-core-mixins';
 
 /*
 |--------------------------------------------------------------------------
@@ -60,6 +58,7 @@ export default {
     EventBus.$log.debug(config)
     EventBus.$log.debug('c', config)
     EventBus.$log.debug('e', EventBus)
+    EventBus.$log.debug('el', EventBus.$log)
     return new Promise((resolve/*, reject*/) => {
       EventBus.$log.debug('promise --')
       var _callback = items => {

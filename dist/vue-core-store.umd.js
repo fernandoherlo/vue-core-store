@@ -3238,8 +3238,11 @@ var es_promise = __webpack_require__("e6cf");
   getBaseAll: function getBaseAll(commit, config) {
     // Degub
     vue_core_mixins_common["EventBus"].$log.debug('ACTIONS');
+    vue_core_mixins_common["EventBus"].$log.debug('eooo');
     vue_core_mixins_common["EventBus"].$log.debug(commit);
+    vue_core_mixins_common["EventBus"].$log.debug('s', commit);
     vue_core_mixins_common["EventBus"].$log.debug(config);
+    vue_core_mixins_common["EventBus"].$log.debug('c', config);
     return new Promise(function (resolve
     /*, reject*/
     ) {

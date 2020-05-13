@@ -52,8 +52,11 @@ export default {
   getBaseAll (commit, config) {
     // Degub
     EventBus.$log.debug('ACTIONS')
+    EventBus.$log.debug('eooo')
     EventBus.$log.debug(commit)
+    EventBus.$log.debug('s', commit)
     EventBus.$log.debug(config)
+    EventBus.$log.debug('c', config)
     return new Promise((resolve/*, reject*/) => {
       EventBus.$log.debug('promise --')
       var _callback = items => {

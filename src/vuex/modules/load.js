@@ -49,6 +49,8 @@ const actions = {
     dispatch('initLoad', modules.length)
     // Load
     let load = function (i) {
+      // Degub
+      EventBus.$log.debug('VUEX LOAD > ' + i)
       if (i === modules.length) {
         // Complete
         dispatch('completeLoad', VUE_APP_LOAD_COMPLETE)

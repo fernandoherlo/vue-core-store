@@ -3066,6 +3066,9 @@ var actions = {
     dispatch('initLoad', modules.length); // Load
 
     var load = function load(i) {
+      // Degub
+      vue_core_mixins_common["EventBus"].$log.debug('VUEX LOAD > ' + i);
+
       if (i === modules.length) {
         // Complete
         dispatch('completeLoad', VUE_APP_LOAD_COMPLETE);

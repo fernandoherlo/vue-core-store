@@ -3237,10 +3237,12 @@ var es_promise = __webpack_require__("e6cf");
   */
   getBaseAll: function getBaseAll(commit, config) {
     // Degub
-    vue_core_mixins_common["EventBus"].$log.debug('ACTIONS', config.options.name);
+    vue_core_mixins_common["EventBus"].$log.debug('ACTIONS');
     return new Promise(function (resolve
     /*, reject*/
     ) {
+      vue_core_mixins_common["EventBus"].$log.debug('promise --');
+
       var _callback = function _callback(items) {
         commit('RECEIVE_' + config.options.name, {
           items: items

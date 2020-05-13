@@ -51,8 +51,9 @@ export default {
   */
   getBaseAll (commit, config) {
     // Degub
-    EventBus.$log.debug('ACTIONS', config.options.name)
+    EventBus.$log.debug('ACTIONS')
     return new Promise((resolve/*, reject*/) => {
+      EventBus.$log.debug('promise --')
       var _callback = items => {
         commit('RECEIVE_' +  config.options.name, { items })
         commit('RECEIVE_LOAD_PARTIAL',  config.options.displayName)

@@ -4,7 +4,9 @@
 |--------------------------------------------------------------------------
 |
 */
-import { EventBus } from '@fernandoherlo/vue-core-mixins';
+// import { EventBus } from '@fernandoherlo/vue-core-mixins';
+import Vue from 'vue'
+const EventBus = new Vue()
 
 /*
 |--------------------------------------------------------------------------

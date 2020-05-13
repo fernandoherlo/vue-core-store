@@ -4,7 +4,6 @@
 |--------------------------------------------------------------------------
 |
 */
-import { EventBus } from '@fernandoherlo/vue-core-mixins';
 import Vue from 'vue'
 
 /*
@@ -71,7 +70,7 @@ export default {
   */
   getByParent (commit, config, id_parent) {
     // Degub
-    EventBus.$log.debug('ACTIONS')
+    Vue.$log.debug('ACTIONS')
     return new Promise((resolve/*, reject*/) => {
       if (config.options.dataFromLaravel) {
         let dataRelatedLaravel = config.options.dataRelatedLaravel
@@ -91,7 +90,7 @@ export default {
   */
   getItem (commit, config, id) {
     // Degub
-    EventBus.$log.debug('ACTIONS')
+    Vue.$log.debug('ACTIONS')
     return new Promise((resolve/*, reject*/) => {
       commit('GET_' + config.options.nameSingle, { id })
       resolve()
@@ -105,13 +104,13 @@ export default {
   */
   updateItem (commit, config, item) {
     // Degub
-    EventBus.$log.debug('ACTIONS')
+    Vue.$log.debug('ACTIONS')
     return new Promise((resolve/*, reject*/) => {
       var _callback = itemApi => {
         commit('UPDATE_' + config.options.nameSingle, { itemApi })
         resolve()
       }
-      EventBus.$emit('apiUpdate', config.options.dataUrl, item, _callback)
+      Vue.$EventBus.$emit('apiUpdate', config.options.dataUrl, item, _callback)
     })
   },
   /*
@@ -122,7 +121,7 @@ export default {
   */
   saveItem (commit, config, item) {
     // Degub
-    EventBus.$log.debug('ACTIONS')
+    Vue.$log.debug('ACTIONS')
     return new Promise((resolve, reject) => {
       var _callback = itemApi => {
         if (itemApi) {
@@ -133,7 +132,7 @@ export default {
           reject(itemApi)
         }
       }
-      EventBus.$emit('apiSave', config.options.dataUrl, item, _callback)
+      Vue.$EventBus.$emit('apiSave', config.options.dataUrl, item, _callback)
     })
   },
   /*
@@ -144,7 +143,7 @@ export default {
   */
   deleteItem (commit, config, item, id_parent) {
     // Degub
-    EventBus.$log.debug('ACTIONS')
+    Vue.$log.debug('ACTIONS')
     return new Promise((resolve/*, reject*/) => {
       // eslint-disable-next-line no-unused-vars
       var _callback = itemApi => {
@@ -152,9 +151,9 @@ export default {
         resolve()
       }
       if (id_parent && config.options.dataFromLaravel) {
-        EventBus.$emit('apiDelete', config.options.dataUrl, item, _callback, null, id_parent)
+        Vue.$EventBus.$emit('apiDelete', config.options.dataUrl, item, _callback, null, id_parent)
       } else {
-        EventBus.$emit('apiDelete', config.options.dataUrl, item, _callback)
+        Vue.$EventBus.$emit('apiDelete', config.options.dataUrl, item, _callback)
       }
     })
   },
@@ -166,7 +165,7 @@ export default {
   */
   clearItem (commit, config) {
     // Degub
-    EventBus.$log.debug('ACTIONS')
+    Vue.$log.debug('ACTIONS')
     return new Promise((resolve/*, reject*/) => {
       commit('CLEAR_' + config.options.nameSingle)
       resolve()

@@ -916,240 +916,6 @@ module.exports = getBuiltIn('Reflect', 'ownKeys') || function ownKeys(it) {
 
 /***/ }),
 
-/***/ "5987":
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports =
-/******/ (function(modules) { // webpackBootstrap
-/******/ 	// The module cache
-/******/ 	var installedModules = {};
-/******/
-/******/ 	// The require function
-/******/ 	function __webpack_require__(moduleId) {
-/******/
-/******/ 		// Check if module is in cache
-/******/ 		if(installedModules[moduleId]) {
-/******/ 			return installedModules[moduleId].exports;
-/******/ 		}
-/******/ 		// Create a new module (and put it into the cache)
-/******/ 		var module = installedModules[moduleId] = {
-/******/ 			i: moduleId,
-/******/ 			l: false,
-/******/ 			exports: {}
-/******/ 		};
-/******/
-/******/ 		// Execute the module function
-/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
-/******/
-/******/ 		// Flag the module as loaded
-/******/ 		module.l = true;
-/******/
-/******/ 		// Return the exports of the module
-/******/ 		return module.exports;
-/******/ 	}
-/******/
-/******/
-/******/ 	// expose the modules object (__webpack_modules__)
-/******/ 	__webpack_require__.m = modules;
-/******/
-/******/ 	// expose the module cache
-/******/ 	__webpack_require__.c = installedModules;
-/******/
-/******/ 	// define getter function for harmony exports
-/******/ 	__webpack_require__.d = function(exports, name, getter) {
-/******/ 		if(!__webpack_require__.o(exports, name)) {
-/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
-/******/ 		}
-/******/ 	};
-/******/
-/******/ 	// define __esModule on exports
-/******/ 	__webpack_require__.r = function(exports) {
-/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
-/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
-/******/ 		}
-/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
-/******/ 	};
-/******/
-/******/ 	// create a fake namespace object
-/******/ 	// mode & 1: value is a module id, require it
-/******/ 	// mode & 2: merge all properties of value into the ns
-/******/ 	// mode & 4: return value when already ns object
-/******/ 	// mode & 8|1: behave like require
-/******/ 	__webpack_require__.t = function(value, mode) {
-/******/ 		if(mode & 1) value = __webpack_require__(value);
-/******/ 		if(mode & 8) return value;
-/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
-/******/ 		var ns = Object.create(null);
-/******/ 		__webpack_require__.r(ns);
-/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
-/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
-/******/ 		return ns;
-/******/ 	};
-/******/
-/******/ 	// getDefaultExport function for compatibility with non-harmony modules
-/******/ 	__webpack_require__.n = function(module) {
-/******/ 		var getter = module && module.__esModule ?
-/******/ 			function getDefault() { return module['default']; } :
-/******/ 			function getModuleExports() { return module; };
-/******/ 		__webpack_require__.d(getter, 'a', getter);
-/******/ 		return getter;
-/******/ 	};
-/******/
-/******/ 	// Object.prototype.hasOwnProperty.call
-/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
-/******/
-/******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "";
-/******/
-/******/
-/******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "fae3");
-/******/ })
-/************************************************************************/
-/******/ ({
-
-/***/ "8bbf":
-/***/ (function(module, exports) {
-
-module.exports = __webpack_require__("8bbf");
-
-/***/ }),
-
-/***/ "f6fd":
-/***/ (function(module, exports) {
-
-// document.currentScript polyfill by Adam Miller
-
-// MIT license
-
-(function(document){
-  var currentScript = "currentScript",
-      scripts = document.getElementsByTagName('script'); // Live NodeList collection
-
-  // If browser needs currentScript polyfill, add get currentScript() to the document object
-  if (!(currentScript in document)) {
-    Object.defineProperty(document, currentScript, {
-      get: function(){
-
-        // IE 6-10 supports script readyState
-        // IE 10+ support stack trace
-        try { throw new Error(); }
-        catch (err) {
-
-          // Find the second match for the "at" string to get file src url from stack.
-          // Specifically works with the format of stack traces in IE.
-          var i, res = ((/.*at [^\(]*\((.*):.+:.+\)$/ig).exec(err.stack) || [false])[1];
-
-          // For all scripts on the page, if src matches or if ready state is interactive, return the script tag
-          for(i in scripts){
-            if(scripts[i].src == res || scripts[i].readyState == "interactive"){
-              return scripts[i];
-            }
-          }
-
-          // If no match, return null
-          return null;
-        }
-      }
-    });
-  }
-})(document);
-
-
-/***/ }),
-
-/***/ "fae3":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-// ESM COMPAT FLAG
-__webpack_require__.r(__webpack_exports__);
-
-// EXPORTS
-__webpack_require__.d(__webpack_exports__, "Events", function() { return /* reexport */ events; });
-__webpack_require__.d(__webpack_exports__, "EventBus", function() { return /* reexport */ EventBus; });
-
-// CONCATENATED MODULE: ./node_modules/@vue/cli-service/lib/commands/build/setPublicPath.js
-// This file is imported into lib/wc client bundles.
-
-if (typeof window !== 'undefined') {
-  if (true) {
-    __webpack_require__("f6fd")
-  }
-
-  var i
-  if ((i = window.document.currentScript) && (i = i.src.match(/(.+\/)[^/]+\.js(\?.*)?$/))) {
-    __webpack_require__.p = i[1] // eslint-disable-line
-  }
-}
-
-// Indicate to webpack that this file can be concatenated
-/* harmony default export */ var setPublicPath = (null);
-
-// CONCATENATED MODULE: ./src/mixins/events.js
-// EVENTS
-/* harmony default export */ var events = ({
-  created: function created() {
-    var _this = this;
-
-    // apiGet
-    this.$EventBus.$on('apiGet', function (url, callback) {
-      // Degub
-      _this.$log.debug('EVENTS -> apiGet', url);
-
-      _this.$api.get(url, callback);
-    }); // apiUpdate
-
-    this.$EventBus.$on('apiUpdate', function (url, item, callback) {
-      // Degub
-      _this.$log.debug('EVENTS -> apiUpdate', url);
-
-      _this.$api.update(url, item, callback);
-    }); // apiSave
-
-    this.$EventBus.$on('apiSave', function (url, item, callback) {
-      // Degub
-      _this.$log.debug('EVENTS -> apiSave', url);
-
-      _this.$api.save(url, item, callback);
-    }); // apiDelete
-
-    this.$EventBus.$on('apiDelete', function (url, item, callback, wait, id_parent) {
-      // Degub
-      _this.$log.debug('EVENTS -> apiDelete', url);
-
-      _this.$api.delete(url, item, callback, wait, id_parent);
-    });
-  }
-});
-// EXTERNAL MODULE: external {"commonjs":"vue","commonjs2":"vue","root":"Vue"}
-var external_commonjs_vue_commonjs2_vue_root_Vue_ = __webpack_require__("8bbf");
-var external_commonjs_vue_commonjs2_vue_root_Vue_default = /*#__PURE__*/__webpack_require__.n(external_commonjs_vue_commonjs2_vue_root_Vue_);
-
-// CONCATENATED MODULE: ./src/mixins/event-bus.js
-
-var EventBus = new external_commonjs_vue_commonjs2_vue_root_Vue_default.a();
-// CONCATENATED MODULE: ./src/build.js
-/**
- * @name VueJS VueCore Mixins (vue-core-mixins)
- * @description Library for Vue.js 2.0
- */
-// Mixins
-
-
-
-// CONCATENATED MODULE: ./node_modules/@vue/cli-service/lib/commands/build/entry-lib-no-default.js
-
-
-
-
-/***/ })
-
-/******/ });
-//# sourceMappingURL=vue-core-mixins.common.js.map
-
-/***/ }),
-
 /***/ "5c6c":
 /***/ (function(module, exports) {
 
@@ -3003,8 +2769,9 @@ function _defineProperty(obj, key, value) {
 
   return obj;
 }
-// EXTERNAL MODULE: ./node_modules/@fernandoherlo/vue-core-mixins/dist/vue-core-mixins.common.js
-var vue_core_mixins_common = __webpack_require__("5987");
+// EXTERNAL MODULE: external {"commonjs":"vue","commonjs2":"vue","root":"Vue"}
+var external_commonjs_vue_commonjs2_vue_root_Vue_ = __webpack_require__("8bbf");
+var external_commonjs_vue_commonjs2_vue_root_Vue_default = /*#__PURE__*/__webpack_require__.n(external_commonjs_vue_commonjs2_vue_root_Vue_);
 
 // CONCATENATED MODULE: ./src/vuex/modules/load.js
 
@@ -3059,7 +2826,7 @@ var actions = {
     var dispatch = _ref.dispatch,
         commit = _ref.commit;
     // Degub
-    vue_core_mixins_common["EventBus"].$log.debug('VUEX LOAD', data);
+    external_commonjs_vue_commonjs2_vue_root_Vue_default.a.$log.debug('VUEX LOAD', data);
     var modules = data[0];
     var VUE_APP_LOAD_COMPLETE = data[1]; // Init
 
@@ -3067,7 +2834,7 @@ var actions = {
 
     var load = function load(i) {
       // Degub
-      vue_core_mixins_common["EventBus"].$log.debug('VUEX LOAD > ' + i);
+      external_commonjs_vue_commonjs2_vue_root_Vue_default.a.$log.debug('VUEX LOAD > ' + i);
 
       if (i === modules.length) {
         // Complete
@@ -3088,13 +2855,13 @@ var actions = {
   initLoad: function initLoad(_ref2, count) {
     var commit = _ref2.commit;
     // Degub
-    vue_core_mixins_common["EventBus"].$log.debug('RECEIVE_LOAD_INIT', count);
+    external_commonjs_vue_commonjs2_vue_root_Vue_default.a.$log.debug('RECEIVE_LOAD_INIT', count);
     commit('RECEIVE_LOAD_INIT', count);
   },
   completeLoad: function completeLoad(_ref3, VUE_APP_LOAD_COMPLETE) {
     var commit = _ref3.commit;
     // Degub
-    vue_core_mixins_common["EventBus"].$log.debug('VUE_APP_LOAD_COMPLETE');
+    external_commonjs_vue_commonjs2_vue_root_Vue_default.a.$log.debug('VUE_APP_LOAD_COMPLETE');
     setTimeout(function () {
       commit('RECEIVE_LOAD_END', '<strong>' + VUE_APP_LOAD_COMPLETE + '</strong>');
     }, 500);
@@ -3112,20 +2879,20 @@ var actions = {
 
 var mutations = (_mutations = {}, _defineProperty(_mutations, 'RECEIVE_LOAD', function RECEIVE_LOAD(state) {
   // Degub
-  vue_core_mixins_common["EventBus"].$log.debug('mu -> RECEIVE_LOAD');
+  external_commonjs_vue_commonjs2_vue_root_Vue_default.a.$log.debug('mu -> RECEIVE_LOAD');
   state.load = true;
 }), _defineProperty(_mutations, 'RECEIVE_LOAD_INIT', function RECEIVE_LOAD_INIT(state, count) {
   // Degub
-  vue_core_mixins_common["EventBus"].$log.debug('mu -> RECEIVE_LOAD_INIT', count);
+  external_commonjs_vue_commonjs2_vue_root_Vue_default.a.$log.debug('mu -> RECEIVE_LOAD_INIT', count);
   state.count = count;
 }), _defineProperty(_mutations, 'RECEIVE_LOAD_PARTIAL', function RECEIVE_LOAD_PARTIAL(state, msg) {
   // Degub
-  vue_core_mixins_common["EventBus"].$log.debug('mu -> RECEIVE_LOAD_PARTIAL', msg);
+  external_commonjs_vue_commonjs2_vue_root_Vue_default.a.$log.debug('mu -> RECEIVE_LOAD_PARTIAL', msg);
   state.now++;
   state.msg += '<small>' + msg + ' <strong>(' + state.now + '/' + state.count + ')</strong></small>';
 }), _defineProperty(_mutations, 'RECEIVE_LOAD_END', function RECEIVE_LOAD_END(state, msg) {
   // Degub
-  vue_core_mixins_common["EventBus"].$log.debug('mu -> RECEIVE_LOAD_END', msg);
+  external_commonjs_vue_commonjs2_vue_root_Vue_default.a.$log.debug('mu -> RECEIVE_LOAD_END', msg);
   state.msg += '<small class="end">' + msg + '</small>';
 }), _mutations);
 /*
@@ -3176,10 +2943,6 @@ var es_object_to_string = __webpack_require__("d3b7");
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.promise.js
 var es_promise = __webpack_require__("e6cf");
 
-// EXTERNAL MODULE: external {"commonjs":"vue","commonjs2":"vue","root":"Vue"}
-var external_commonjs_vue_commonjs2_vue_root_Vue_ = __webpack_require__("8bbf");
-var external_commonjs_vue_commonjs2_vue_root_Vue_default = /*#__PURE__*/__webpack_require__.n(external_commonjs_vue_commonjs2_vue_root_Vue_);
-
 // CONCATENATED MODULE: ./src/vuex/actions.js
 
 
@@ -3192,7 +2955,6 @@ var external_commonjs_vue_commonjs2_vue_root_Vue_default = /*#__PURE__*/__webpac
 |--------------------------------------------------------------------------
 |
 */
-
 
 /*
 |--------------------------------------------------------------------------
@@ -3268,7 +3030,7 @@ var external_commonjs_vue_commonjs2_vue_root_Vue_default = /*#__PURE__*/__webpac
   */
   getByParent: function getByParent(commit, config, id_parent) {
     // Degub
-    vue_core_mixins_common["EventBus"].$log.debug('ACTIONS');
+    external_commonjs_vue_commonjs2_vue_root_Vue_default.a.$log.debug('ACTIONS');
     return new Promise(function (resolve
     /*, reject*/
     ) {
@@ -3298,7 +3060,7 @@ var external_commonjs_vue_commonjs2_vue_root_Vue_default = /*#__PURE__*/__webpac
   */
   getItem: function getItem(commit, config, id) {
     // Degub
-    vue_core_mixins_common["EventBus"].$log.debug('ACTIONS');
+    external_commonjs_vue_commonjs2_vue_root_Vue_default.a.$log.debug('ACTIONS');
     return new Promise(function (resolve
     /*, reject*/
     ) {
@@ -3317,7 +3079,7 @@ var external_commonjs_vue_commonjs2_vue_root_Vue_default = /*#__PURE__*/__webpac
   */
   updateItem: function updateItem(commit, config, item) {
     // Degub
-    vue_core_mixins_common["EventBus"].$log.debug('ACTIONS');
+    external_commonjs_vue_commonjs2_vue_root_Vue_default.a.$log.debug('ACTIONS');
     return new Promise(function (resolve
     /*, reject*/
     ) {
@@ -3328,7 +3090,7 @@ var external_commonjs_vue_commonjs2_vue_root_Vue_default = /*#__PURE__*/__webpac
         resolve();
       };
 
-      vue_core_mixins_common["EventBus"].$emit('apiUpdate', config.options.dataUrl, item, _callback);
+      external_commonjs_vue_commonjs2_vue_root_Vue_default.a.$EventBus.$emit('apiUpdate', config.options.dataUrl, item, _callback);
     });
   },
 
@@ -3340,7 +3102,7 @@ var external_commonjs_vue_commonjs2_vue_root_Vue_default = /*#__PURE__*/__webpac
   */
   saveItem: function saveItem(commit, config, item) {
     // Degub
-    vue_core_mixins_common["EventBus"].$log.debug('ACTIONS');
+    external_commonjs_vue_commonjs2_vue_root_Vue_default.a.$log.debug('ACTIONS');
     return new Promise(function (resolve, reject) {
       var _callback = function _callback(itemApi) {
         if (itemApi) {
@@ -3354,7 +3116,7 @@ var external_commonjs_vue_commonjs2_vue_root_Vue_default = /*#__PURE__*/__webpac
         }
       };
 
-      vue_core_mixins_common["EventBus"].$emit('apiSave', config.options.dataUrl, item, _callback);
+      external_commonjs_vue_commonjs2_vue_root_Vue_default.a.$EventBus.$emit('apiSave', config.options.dataUrl, item, _callback);
     });
   },
 
@@ -3366,7 +3128,7 @@ var external_commonjs_vue_commonjs2_vue_root_Vue_default = /*#__PURE__*/__webpac
   */
   deleteItem: function deleteItem(commit, config, item, id_parent) {
     // Degub
-    vue_core_mixins_common["EventBus"].$log.debug('ACTIONS');
+    external_commonjs_vue_commonjs2_vue_root_Vue_default.a.$log.debug('ACTIONS');
     return new Promise(function (resolve
     /*, reject*/
     ) {
@@ -3379,9 +3141,9 @@ var external_commonjs_vue_commonjs2_vue_root_Vue_default = /*#__PURE__*/__webpac
       };
 
       if (id_parent && config.options.dataFromLaravel) {
-        vue_core_mixins_common["EventBus"].$emit('apiDelete', config.options.dataUrl, item, _callback, null, id_parent);
+        external_commonjs_vue_commonjs2_vue_root_Vue_default.a.$EventBus.$emit('apiDelete', config.options.dataUrl, item, _callback, null, id_parent);
       } else {
-        vue_core_mixins_common["EventBus"].$emit('apiDelete', config.options.dataUrl, item, _callback);
+        external_commonjs_vue_commonjs2_vue_root_Vue_default.a.$EventBus.$emit('apiDelete', config.options.dataUrl, item, _callback);
       }
     });
   },
@@ -3394,7 +3156,7 @@ var external_commonjs_vue_commonjs2_vue_root_Vue_default = /*#__PURE__*/__webpac
   */
   clearItem: function clearItem(commit, config) {
     // Degub
-    vue_core_mixins_common["EventBus"].$log.debug('ACTIONS');
+    external_commonjs_vue_commonjs2_vue_root_Vue_default.a.$log.debug('ACTIONS');
     return new Promise(function (resolve
     /*, reject*/
     ) {
@@ -3429,7 +3191,6 @@ var es_object_assign = __webpack_require__("cca6");
 |--------------------------------------------------------------------------
 |
 */
-
 
 /*
 |--------------------------------------------------------------------------
@@ -3480,12 +3241,12 @@ var es_object_assign = __webpack_require__("cca6");
   */
   getAll: function getAll(state, items) {
     // Degub
-    vue_core_mixins_common["EventBus"].$log.debug('MUTATIONS');
+    external_commonjs_vue_commonjs2_vue_root_Vue_default.a.$log.debug('MUTATIONS');
     state.all = items;
   },
   getAllByParent: function getAllByParent(state, id_parent) {
     // Degub
-    vue_core_mixins_common["EventBus"].$log.debug('MUTATIONS');
+    external_commonjs_vue_commonjs2_vue_root_Vue_default.a.$log.debug('MUTATIONS');
     var newStates = state.all.filter(function (item) {
       return item.id_parent === id_parent;
     });
@@ -3493,7 +3254,7 @@ var es_object_assign = __webpack_require__("cca6");
   },
   getAllByParentLaravel: function getAllByParentLaravel(state, id_parent, dataRelatedLaravel, dataIdRelated) {
     // Degub
-    vue_core_mixins_common["EventBus"].$log.debug('MUTATIONS');
+    external_commonjs_vue_commonjs2_vue_root_Vue_default.a.$log.debug('MUTATIONS');
     var newStates = null;
 
     if (dataRelatedLaravel) {
@@ -3515,7 +3276,7 @@ var es_object_assign = __webpack_require__("cca6");
   },
   getItem: function getItem(state, id) {
     // Degub
-    vue_core_mixins_common["EventBus"].$log.debug('MUTATIONS');
+    external_commonjs_vue_commonjs2_vue_root_Vue_default.a.$log.debug('MUTATIONS');
     state.item = state.all.filter(function (item) {
       return item.id === id;
     })[0];
@@ -3523,7 +3284,7 @@ var es_object_assign = __webpack_require__("cca6");
   },
   clearItem: function clearItem(state) {
     // Degub
-    vue_core_mixins_common["EventBus"].$log.debug('MUTATIONS');
+    external_commonjs_vue_commonjs2_vue_root_Vue_default.a.$log.debug('MUTATIONS');
     state.item = {};
     state.clone = {};
   },
@@ -3536,7 +3297,7 @@ var es_object_assign = __webpack_require__("cca6");
   */
   updateItem: function updateItem(state, item) {
     // Degub
-    vue_core_mixins_common["EventBus"].$log.debug('MUTATIONS'); // Update all
+    external_commonjs_vue_commonjs2_vue_root_Vue_default.a.$log.debug('MUTATIONS'); // Update all
 
     this.__updateItemState(state.all, item);
 
@@ -3547,7 +3308,7 @@ var es_object_assign = __webpack_require__("cca6");
   },
   __updateItemState: function __updateItemState(stateEl, item, indexEl) {
     // Degub
-    vue_core_mixins_common["EventBus"].$log.debug('MUTATIONS');
+    external_commonjs_vue_commonjs2_vue_root_Vue_default.a.$log.debug('MUTATIONS');
     var index = stateEl.findIndex(function (element) {
       return element.id === item.id;
     }); // Overwrite
@@ -3569,7 +3330,7 @@ var es_object_assign = __webpack_require__("cca6");
   */
   saveItem: function saveItem(state, item) {
     // Degub
-    vue_core_mixins_common["EventBus"].$log.debug('MUTATIONS'); // Save all
+    external_commonjs_vue_commonjs2_vue_root_Vue_default.a.$log.debug('MUTATIONS'); // Save all
 
     this.__saveItemState(state.all, item);
 
@@ -3580,7 +3341,7 @@ var es_object_assign = __webpack_require__("cca6");
   },
   __saveItemState: function __saveItemState(stateEl, item) {
     // Degub
-    vue_core_mixins_common["EventBus"].$log.debug('MUTATIONS');
+    external_commonjs_vue_commonjs2_vue_root_Vue_default.a.$log.debug('MUTATIONS');
     var clone = Object.assign({}, item);
     stateEl.push(clone); // Return
 
@@ -3595,7 +3356,7 @@ var es_object_assign = __webpack_require__("cca6");
   */
   deleteItem: function deleteItem(state, item) {
     // Degub
-    vue_core_mixins_common["EventBus"].$log.debug('MUTATIONS'); // Delete
+    external_commonjs_vue_commonjs2_vue_root_Vue_default.a.$log.debug('MUTATIONS'); // Delete
 
     this.__deleteItemState(state.all, item);
 
@@ -3606,7 +3367,7 @@ var es_object_assign = __webpack_require__("cca6");
   },
   __deleteItemState: function __deleteItemState(stateEl, item, indexEl) {
     // Degub
-    vue_core_mixins_common["EventBus"].$log.debug('MUTATIONS');
+    external_commonjs_vue_commonjs2_vue_root_Vue_default.a.$log.debug('MUTATIONS');
     var index = stateEl.findIndex(function (element) {
       return element.id === item.id;
     }); // Overwrite

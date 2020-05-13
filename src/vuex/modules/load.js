@@ -4,7 +4,7 @@
 |--------------------------------------------------------------------------
 |
 */
-import { EventBus } from '@fernandoherlo/vue-core-mixins';
+import Vue from 'vue'
 
 /*
 |--------------------------------------------------------------------------
@@ -40,7 +40,7 @@ const actions = {
   // eslint-disable-next-line
   loadBaseData ({ dispatch, commit }, data) {
     // Degub
-    EventBus.$log.debug('VUEX LOAD', data)
+    Vue.$log.debug('VUEX LOAD', data)
 
     var modules = data[0]
     var VUE_APP_LOAD_COMPLETE = data[1]
@@ -50,7 +50,7 @@ const actions = {
     // Load
     let load = function (i) {
       // Degub
-      EventBus.$log.debug('VUEX LOAD > ' + i)
+      Vue.$log.debug('VUEX LOAD > ' + i)
       if (i === modules.length) {
         // Complete
         dispatch('completeLoad', VUE_APP_LOAD_COMPLETE)
@@ -68,12 +68,12 @@ const actions = {
   },
   initLoad ({ commit }, count) {
     // Degub
-    EventBus.$log.debug('RECEIVE_LOAD_INIT', count)
+    Vue.$log.debug('RECEIVE_LOAD_INIT', count)
     commit('RECEIVE_LOAD_INIT', count)
   },
   completeLoad ({ commit }, VUE_APP_LOAD_COMPLETE) {
     // Degub
-    EventBus.$log.debug('VUE_APP_LOAD_COMPLETE')
+    Vue.$log.debug('VUE_APP_LOAD_COMPLETE')
     setTimeout(() => {
       commit('RECEIVE_LOAD_END', '<strong>' + VUE_APP_LOAD_COMPLETE + '</strong>')
     }, 500)
@@ -92,23 +92,23 @@ const actions = {
 const mutations = {
   ['RECEIVE_LOAD'] (state) {
     // Degub
-    EventBus.$log.debug('mu -> RECEIVE_LOAD')
+    Vue.$log.debug('mu -> RECEIVE_LOAD')
     state.load = true
   },
   ['RECEIVE_LOAD_INIT'] (state, count) {
     // Degub
-    EventBus.$log.debug('mu -> RECEIVE_LOAD_INIT', count)
+    Vue.$log.debug('mu -> RECEIVE_LOAD_INIT', count)
     state.count = count
   },
   ['RECEIVE_LOAD_PARTIAL'] (state, msg) {
     // Degub
-    EventBus.$log.debug('mu -> RECEIVE_LOAD_PARTIAL', msg)
+    Vue.$log.debug('mu -> RECEIVE_LOAD_PARTIAL', msg)
     state.now++
     state.msg += '<small>' + msg + ' <strong>(' + state.now + '/' + state.count + ')</strong></small>'
   },
   ['RECEIVE_LOAD_END'] (state, msg) {
     // Degub
-    EventBus.$log.debug('mu -> RECEIVE_LOAD_END', msg)
+    Vue.$log.debug('mu -> RECEIVE_LOAD_END', msg)
     state.msg += '<small class="end">' + msg + '</small>'
   }
 }

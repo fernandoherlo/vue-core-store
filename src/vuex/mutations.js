@@ -5,7 +5,6 @@
 |
 */
 import Vue from 'vue'
-import { EventBus } from '@fernandoherlo/vue-core-mixins';
 
 /*
 |--------------------------------------------------------------------------
@@ -52,19 +51,19 @@ export default {
   */
   getAll (state, items) {
     // Degub
-    EventBus.$log.debug('MUTATIONS')
+    Vue.$log.debug('MUTATIONS')
     state.all = items
   },
   getAllByParent (state, id_parent) {
     // Degub
-    EventBus.$log.debug('MUTATIONS')
+    Vue.$log.debug('MUTATIONS')
     let newStates = state.all.filter(item => item.id_parent === id_parent)
 
     Vue.set(state, 'allByParent', newStates)
   },
   getAllByParentLaravel (state, id_parent, dataRelatedLaravel, dataIdRelated) {
     // Degub
-    EventBus.$log.debug('MUTATIONS')
+    Vue.$log.debug('MUTATIONS')
 
     let newStates = null
 
@@ -86,13 +85,13 @@ export default {
   },
   getItem (state, id) {
     // Degub
-    EventBus.$log.debug('MUTATIONS')
+    Vue.$log.debug('MUTATIONS')
     state.item = state.all.filter(item => item.id === id)[0]
     state.clone = Object.assign({}, state.item)
   },
   clearItem (state) {
     // Degub
-    EventBus.$log.debug('MUTATIONS')
+    Vue.$log.debug('MUTATIONS')
     state.item = {}
     state.clone = {}
   },
@@ -104,7 +103,7 @@ export default {
   */
   updateItem (state, item) {
     // Degub
-    EventBus.$log.debug('MUTATIONS')
+    Vue.$log.debug('MUTATIONS')
     // Update all
     this.__updateItemState(state.all, item)
     if (state.allByParent) {
@@ -114,7 +113,7 @@ export default {
   },
   __updateItemState (stateEl, item, indexEl) {
     // Degub
-    EventBus.$log.debug('MUTATIONS')
+    Vue.$log.debug('MUTATIONS')
     var index = stateEl.findIndex(function(element) {
       return element.id === item.id;
     })
@@ -134,7 +133,7 @@ export default {
   */
   saveItem (state, item) {
     // Degub
-    EventBus.$log.debug('MUTATIONS')
+    Vue.$log.debug('MUTATIONS')
     // Save all
     this.__saveItemState(state.all, item)
     if (state.allByParent) {
@@ -144,7 +143,7 @@ export default {
   },
   __saveItemState (stateEl, item) {
     // Degub
-    EventBus.$log.debug('MUTATIONS')
+    Vue.$log.debug('MUTATIONS')
     var clone = Object.assign({}, item)
     stateEl.push(clone)
 
@@ -159,7 +158,7 @@ export default {
   */
   deleteItem (state, item) {
     // Degub
-    EventBus.$log.debug('MUTATIONS')
+    Vue.$log.debug('MUTATIONS')
     // Delete
     this.__deleteItemState(state.all, item)
     if (state.allByParent) {
@@ -169,7 +168,7 @@ export default {
   },
   __deleteItemState (stateEl, item, indexEl) {
     // Degub
-    EventBus.$log.debug('MUTATIONS')
+    Vue.$log.debug('MUTATIONS')
     var index = stateEl.findIndex(function(element) {
       return element.id === item.id
     })

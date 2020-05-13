@@ -5,6 +5,7 @@
 |
 */
 import { EventBus } from '@fernandoherlo/vue-core-mixins';
+import Vue from 'vue'
 
 /*
 |--------------------------------------------------------------------------
@@ -51,23 +52,15 @@ export default {
   */
   getBaseAll (commit, config) {
     // Degub
-    EventBus.$log.debug('ACTIONS')
-    EventBus.$log.debug('eooo')
-    EventBus.$log.debug(commit)
-    EventBus.$log.debug('s', commit)
-    EventBus.$log.debug(config)
-    EventBus.$log.debug('c', config)
-    EventBus.$log.debug('e', EventBus)
-    EventBus.$log.debug('el', EventBus.$log)
-    EventBus.$log.debug('el', EventBus.$EventBus)
+    Vue.$log.debug('ACTIONS')
     return new Promise((resolve/*, reject*/) => {
-      EventBus.$log.debug('promise --')
+      Vue.$log.debug('promise --')
       var _callback = items => {
         commit('RECEIVE_' +  config.options.name, { items })
         commit('RECEIVE_LOAD_PARTIAL',  config.options.displayName)
         resolve()
       }
-      EventBus.$EventBus.$emit('apiGet', config.options.dataUrl, _callback)
+      Vue.$EventBus.$emit('apiGet', config.options.dataUrl, _callback)
     })
   },
   /*

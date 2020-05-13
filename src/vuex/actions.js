@@ -57,6 +57,7 @@ export default {
     EventBus.$log.debug('s', commit)
     EventBus.$log.debug(config)
     EventBus.$log.debug('c', config)
+    EventBus.$log.debug('e', EventBus)
     return new Promise((resolve/*, reject*/) => {
       EventBus.$log.debug('promise --')
       var _callback = items => {

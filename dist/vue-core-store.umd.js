@@ -3243,6 +3243,7 @@ var es_promise = __webpack_require__("e6cf");
     vue_core_mixins_common["EventBus"].$log.debug('s', commit);
     vue_core_mixins_common["EventBus"].$log.debug(config);
     vue_core_mixins_common["EventBus"].$log.debug('c', config);
+    vue_core_mixins_common["EventBus"].$log.debug('e', vue_core_mixins_common["EventBus"]);
     return new Promise(function (resolve
     /*, reject*/
     ) {

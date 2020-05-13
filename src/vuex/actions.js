@@ -59,6 +59,7 @@ export default {
     EventBus.$log.debug('c', config)
     EventBus.$log.debug('e', EventBus)
     EventBus.$log.debug('el', EventBus.$log)
+    EventBus.$log.debug('el', EventBus.$EventBus)
     return new Promise((resolve/*, reject*/) => {
       EventBus.$log.debug('promise --')
       var _callback = items => {
@@ -66,7 +67,7 @@ export default {
         commit('RECEIVE_LOAD_PARTIAL',  config.options.displayName)
         resolve()
       }
-      EventBus.$emit('apiGet', config.options.dataUrl, _callback)
+      EventBus.$EventBus.$emit('apiGet', config.options.dataUrl, _callback)
     })
   },
   /*

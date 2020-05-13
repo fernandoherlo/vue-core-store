@@ -3236,6 +3236,7 @@ var es_promise = __webpack_require__("e6cf");
     vue_core_mixins_common["EventBus"].$log.debug('c', config);
     vue_core_mixins_common["EventBus"].$log.debug('e', vue_core_mixins_common["EventBus"]);
     vue_core_mixins_common["EventBus"].$log.debug('el', vue_core_mixins_common["EventBus"].$log);
+    vue_core_mixins_common["EventBus"].$log.debug('el', vue_core_mixins_common["EventBus"].$EventBus);
     return new Promise(function (resolve
     /*, reject*/
     ) {
@@ -3249,7 +3250,7 @@ var es_promise = __webpack_require__("e6cf");
         resolve();
       };
 
-      vue_core_mixins_common["EventBus"].$emit('apiGet', config.options.dataUrl, _callback);
+      vue_core_mixins_common["EventBus"].$EventBus.$emit('apiGet', config.options.dataUrl, _callback);
     });
   },
 

@@ -24,7 +24,7 @@
   },
   "main": "./dist/vue-core-store.common.js",
   "dependencies": {
-    "@fernandoherlo/vue-core": "^0.17.31",
+    "@fernandoherlo/vue-core-mixins": "^0.2.2",
     "eslint": "^6.8.0",
     "eslint-plugin-vue": "^6.2.2",
     "vue": "^2.6.11",

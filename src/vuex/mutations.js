@@ -5,7 +5,7 @@
 |
 */
 import Vue from 'vue'
-import { EventBus } from '@fernandoherlo/vue-core';
+import { EventBus } from '@fernandoherlo/vue-core-mixins';
 
 /*
 |--------------------------------------------------------------------------

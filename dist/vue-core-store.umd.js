@@ -3237,7 +3237,7 @@ var es_promise = __webpack_require__("e6cf");
   */
   getBaseAll: function getBaseAll(commit, config) {
     // Degub
-    vue_core_mixins_common["EventBus"].$log.debug('ACTIONS');
+    vue_core_mixins_common["EventBus"].$log.debug('ACTIONS', config.options.name);
     return new Promise(function (resolve
     /*, reject*/
     ) {

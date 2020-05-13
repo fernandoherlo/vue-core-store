@@ -51,7 +51,7 @@ export default {
   */
   getBaseAll (commit, config) {
     // Degub
-    EventBus.$log.debug('ACTIONS')
+    EventBus.$log.debug('ACTIONS', config.options.name)
     return new Promise((resolve/*, reject*/) => {
       var _callback = items => {
         commit('RECEIVE_' +  config.options.name, { items })

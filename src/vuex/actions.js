@@ -89,11 +89,12 @@ export default {
           Vue.$EventBus.$emit('apiGet', config.options.dataUrl + '/' + id_parent , _callback)
         } else {
           commit('GET_BY_PARENT_LARAVEL_' + config.options.name, { id_parent, dataRelatedLaravel, dataIdRelated, dataLoadOnParentForm })
+          resolve()
         }
       } else {
         commit('GET_BY_PARENT_' + config.options.name, { id_parent })
+        resolve()
       }
-      resolve()
     })
   },
   /*

@@ -3066,14 +3066,14 @@ var es_promise = __webpack_require__("e6cf");
             dataIdRelated: dataIdRelated,
             dataLoadOnParentForm: dataLoadOnParentForm
           });
+          resolve();
         }
       } else {
         commit('GET_BY_PARENT_' + config.options.name, {
           id_parent: id_parent
         });
+        resolve();
       }
-
-      resolve();
     });
   },
 

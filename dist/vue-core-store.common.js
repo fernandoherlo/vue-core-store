@@ -2956,35 +2956,38 @@ var es_promise = __webpack_require__("e6cf");
 
 /* harmony default export */ var vuex_actions = ({
   core: function core(config) {
-    var _ref9;
+    var _ref10;
 
     //mTypeNamePl, mTypeName, dataUrl, displayName
     var self = this;
-    return _ref9 = {}, _defineProperty(_ref9, 'getAll' + config.options.name, function (_ref) {
+    return _ref10 = {}, _defineProperty(_ref10, 'getAll' + config.options.name, function (_ref) {
       var commit = _ref.commit;
       return self.getBaseAll(commit, config);
-    }), _defineProperty(_ref9, 'getByParent' + config.options.name, function (_ref2, id_parent) {
+    }), _defineProperty(_ref10, 'getByParent' + config.options.name, function (_ref2, id_parent) {
       var commit = _ref2.commit;
       return self.getByParent(commit, config, id_parent);
-    }), _defineProperty(_ref9, 'get' + config.options.nameSingle, function (_ref3, id) {
+    }), _defineProperty(_ref10, 'get' + config.options.nameSingle, function (_ref3, id) {
       var commit = _ref3.commit;
       return self.getItem(commit, config, id);
-    }), _defineProperty(_ref9, 'update' + config.options.nameSingle, function (_ref4, item) {
+    }), _defineProperty(_ref10, 'update' + config.options.nameSingle, function (_ref4, item) {
       var commit = _ref4.commit;
       return self.updateItem(commit, config, item);
-    }), _defineProperty(_ref9, 'save' + config.options.nameSingle, function (_ref5, item) {
+    }), _defineProperty(_ref10, 'save' + config.options.nameSingle, function (_ref5, item) {
       var commit = _ref5.commit;
       return self.saveItem(commit, config, item);
-    }), _defineProperty(_ref9, 'delete' + config.options.nameSingle, function (_ref6, item) {
+    }), _defineProperty(_ref10, 'delete' + config.options.nameSingle, function (_ref6, item) {
       var commit = _ref6.commit;
       return self.deleteItem(commit, config, item);
-    }), _defineProperty(_ref9, 'deleteByParent' + config.options.nameSingle, function (_ref7, item_payload) {
+    }), _defineProperty(_ref10, 'deleteByParent' + config.options.nameSingle, function (_ref7, item_payload) {
       var commit = _ref7.commit;
       return self.deleteItem(commit, config, item_payload.item, item_payload.id_parent);
-    }), _defineProperty(_ref9, 'clear' + config.options.nameSingle, function (_ref8) {
+    }), _defineProperty(_ref10, 'clear' + config.options.nameSingle, function (_ref8) {
       var commit = _ref8.commit;
       return self.clearItem(commit, config);
-    }), _ref9;
+    }), _defineProperty(_ref10, 'clearAll' + config.options.name, function (_ref9) {
+      var commit = _ref9.commit;
+      return self.clearItem(commit, config);
+    }), _ref10;
   },
 
   /*
@@ -3031,9 +3034,7 @@ var es_promise = __webpack_require__("e6cf");
         var dataLoadOnParentForm = config.options.dataLoadOnParentForm;
 
         if (dataLoadOnParentForm) {
-          commit('CLEAR_ALL_' + config.options.name, {
-            items: items
-          });
+          commit('CLEAR_ALL_' + config.options.name);
 
           var _callback = function _callback(items) {
             commit('RECEIVE_' + config.options.name, {
@@ -3178,6 +3179,23 @@ var es_promise = __webpack_require__("e6cf");
       commit('CLEAR_' + config.options.nameSingle);
       resolve();
     });
+  },
+
+  /*
+  |--------------------------------------------------------------------------
+  | CLEAR ALL
+  |--------------------------------------------------------------------------
+  |
+  */
+  clearAll: function clearAll(commit, config) {
+    // Degub
+    external_commonjs_vue_commonjs2_vue_root_Vue_default.a.$log.debug('ACTIONS');
+    return new Promise(function (resolve
+    /*, reject*/
+    ) {
+      commit('CLEAR_ALL_' + config.options.name);
+      resolve();
+    });
   }
 });
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.filter.js
@@ -3246,7 +3264,7 @@ var es_object_assign = __webpack_require__("cca6");
       self.deleteItem(state, item);
     }), _defineProperty(_ref8, 'CLEAR_' + config.options.nameSingle, function (state) {
       self.clearItem(state);
-    }), _defineProperty(_ref8, 'CLEAR_ALL_' + config.options.nameSingle, function (state) {
+    }), _defineProperty(_ref8, 'CLEAR_ALL_' + config.options.name, function (state) {
       self.clearAll(state);
     }), _ref8;
   },

@@ -39,6 +39,9 @@ export default {
       },
       ['clear' + config.options.nameSingle] ({ commit }) {
         return self.clearItem(commit, config)
+      },
+      ['clearAll' + config.options.name] ({ commit }) {
+        return self.clearItem(commit, config)
       }
     }
   },
@@ -77,7 +80,7 @@ export default {
         let dataIdRelated = config.options.dataIdRelated
         let dataLoadOnParentForm = config.options.dataLoadOnParentForm
         if (dataLoadOnParentForm) {
-          commit('CLEAR_ALL_' +  config.options.name, { items })
+          commit('CLEAR_ALL_' +  config.options.name)
           var _callback = (items) => {
             commit('RECEIVE_' +  config.options.name, { items })
             commit('GET_BY_PARENT_LARAVEL_' + config.options.name, { id_parent, dataRelatedLaravel, dataIdRelated, dataLoadOnParentForm })
@@ -179,6 +182,20 @@ export default {
     Vue.$log.debug('ACTIONS')
     return new Promise((resolve/*, reject*/) => {
       commit('CLEAR_' + config.options.nameSingle)
+      resolve()
+    })
+  },
+  /*
+  |--------------------------------------------------------------------------
+  | CLEAR ALL
+  |--------------------------------------------------------------------------
+  |
+  */
+  clearAll (commit, config) {
+    // Degub
+    Vue.$log.debug('ACTIONS')
+    return new Promise((resolve/*, reject*/) => {
+      commit('CLEAR_ALL_' + config.options.name)
       resolve()
     })
   },

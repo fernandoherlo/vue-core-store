@@ -40,7 +40,7 @@ export default {
       ['CLEAR_' + config.options.nameSingle] (state) {
         self.clearItem(state)
       },
-      ['CLEAR_ALL_' + config.options.nameSingle] (state) {
+      ['CLEAR_ALL_' + config.options.name] (state) {
         self.clearAll(state)
       }
     }

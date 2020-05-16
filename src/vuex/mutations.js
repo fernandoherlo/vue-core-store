@@ -39,6 +39,9 @@ export default {
       },
       ['CLEAR_' + config.options.nameSingle] (state) {
         self.clearItem(state)
+      },
+      ['CLEAR_ALL_' + config.options.nameSingle] (state) {
+        self.clearAll(state)
       }
     }
   },
@@ -95,6 +98,14 @@ export default {
   clearItem (state) {
     // Degub
     Vue.$log.debug('MUTATIONS')
+    state.item = {}
+    state.clone = {}
+  },
+  clearAll (state) {
+    // Degub
+    Vue.$log.debug('MUTATIONS')
+    state.all = []
+    state.allByParent = []
     state.item = {}
     state.clone = {}
   },

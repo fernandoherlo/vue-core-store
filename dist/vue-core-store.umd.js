@@ -3040,6 +3040,10 @@ var es_promise = __webpack_require__("e6cf");
         var dataLoadOnParentForm = config.options.dataLoadOnParentForm;
 
         if (dataLoadOnParentForm) {
+          commit('CLEAR_ALL_' + config.options.name, {
+            items: items
+          });
+
           var _callback = function _callback(items) {
             commit('RECEIVE_' + config.options.name, {
               items: items
@@ -3251,6 +3255,8 @@ var es_object_assign = __webpack_require__("cca6");
       self.deleteItem(state, item);
     }), _defineProperty(_ref8, 'CLEAR_' + config.options.nameSingle, function (state) {
       self.clearItem(state);
+    }), _defineProperty(_ref8, 'CLEAR_ALL_' + config.options.nameSingle, function (state) {
+      self.clearAll(state);
     }), _ref8;
   },
 
@@ -3310,6 +3316,14 @@ var es_object_assign = __webpack_require__("cca6");
   clearItem: function clearItem(state) {
     // Degub
     external_commonjs_vue_commonjs2_vue_root_Vue_default.a.$log.debug('MUTATIONS');
+    state.item = {};
+    state.clone = {};
+  },
+  clearAll: function clearAll(state) {
+    // Degub
+    external_commonjs_vue_commonjs2_vue_root_Vue_default.a.$log.debug('MUTATIONS');
+    state.all = [];
+    state.allByParent = [];
     state.item = {};
     state.clone = {};
   },

@@ -84,7 +84,9 @@ export default {
       })
     }
     if (dataLoadOnParentForm) { 
-      newStates = state.all
+      newStates = state.all.filter( function(/*item*/) {
+        return true
+      })
     }
 
     Vue.set(state, 'allByParent', newStates)

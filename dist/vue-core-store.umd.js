@@ -3318,7 +3318,11 @@ var es_object_assign = __webpack_require__("cca6");
     }
 
     if (dataLoadOnParentForm) {
-      newStates = state.all;
+      newStates = state.all.filter(function ()
+      /*item*/
+      {
+        return true;
+      });
     }
 
     external_commonjs_vue_commonjs2_vue_root_Vue_default.a.set(state, 'allByParent', newStates);

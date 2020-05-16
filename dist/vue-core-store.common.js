@@ -3028,11 +3028,31 @@ var es_promise = __webpack_require__("e6cf");
       if (config.options.dataFromLaravel) {
         var dataRelatedLaravel = config.options.dataRelatedLaravel;
         var dataIdRelated = config.options.dataIdRelated;
-        commit('GET_BY_PARENT_LARAVEL_' + config.options.name, {
-          id_parent: id_parent,
-          dataRelatedLaravel: dataRelatedLaravel,
-          dataIdRelated: dataIdRelated
-        });
+        var dataLoadOnParentForm = config.options.dataLoadOnParentForm;
+
+        if (dataLoadOnParentForm) {
+          var _callback = function _callback(items) {
+            commit('RECEIVE_' + config.options.name, {
+              items: items
+            });
+            commit('GET_BY_PARENT_LARAVEL_' + config.options.name, {
+              id_parent: id_parent,
+              dataRelatedLaravel: dataRelatedLaravel,
+              dataIdRelated: dataIdRelated,
+              dataLoadOnParentForm: dataLoadOnParentForm
+            });
+            resolve();
+          };
+
+          external_commonjs_vue_commonjs2_vue_root_Vue_default.a.$EventBus.$emit('apiGet', config.options.dataUrl + '/' + id_parent, _callback);
+        } else {
+          commit('GET_BY_PARENT_LARAVEL_' + config.options.name, {
+            id_parent: id_parent,
+            dataRelatedLaravel: dataRelatedLaravel,
+            dataIdRelated: dataIdRelated,
+            dataLoadOnParentForm: dataLoadOnParentForm
+          });
+        }
       } else {
         commit('GET_BY_PARENT_' + config.options.name, {
           id_parent: id_parent
@@ -3205,8 +3225,9 @@ var es_object_assign = __webpack_require__("cca6");
     }), _defineProperty(_ref8, 'GET_BY_PARENT_LARAVEL_' + config.options.name, function (state, _ref3) {
       var id_parent = _ref3.id_parent,
           dataRelatedLaravel = _ref3.dataRelatedLaravel,
-          dataIdRelated = _ref3.dataIdRelated;
-      self.getAllByParentLaravel(state, id_parent, dataRelatedLaravel, dataIdRelated);
+          dataIdRelated = _ref3.dataIdRelated,
+          dataLoadOnParentForm = _ref3.dataLoadOnParentForm;
+      self.getAllByParentLaravel(state, id_parent, dataRelatedLaravel, dataIdRelated, dataLoadOnParentForm);
     }), _defineProperty(_ref8, 'GET_' + config.options.nameSingle, function (state, _ref4) {
       var id = _ref4.id;
       self.getItem(state, id);
@@ -3243,7 +3264,7 @@ var es_object_assign = __webpack_require__("cca6");
     });
     external_commonjs_vue_commonjs2_vue_root_Vue_default.a.set(state, 'allByParent', newStates);
   },
-  getAllByParentLaravel: function getAllByParentLaravel(state, id_parent, dataRelatedLaravel, dataIdRelated) {
+  getAllByParentLaravel: function getAllByParentLaravel(state, id_parent, dataRelatedLaravel, dataIdRelated, dataLoadOnParentForm) {
     // Degub
     external_commonjs_vue_commonjs2_vue_root_Vue_default.a.$log.debug('MUTATIONS');
     var newStates = null;
@@ -3261,6 +3282,10 @@ var es_object_assign = __webpack_require__("cca6");
       newStates = state.all.filter(function (item) {
         return item[dataIdRelated] === id_parent;
       });
+    }
+
+    if (dataLoadOnParentForm) {
+      newStates = state.all;
     }
 
     external_commonjs_vue_commonjs2_vue_root_Vue_default.a.set(state, 'allByParent', newStates);

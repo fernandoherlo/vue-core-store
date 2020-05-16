@@ -22,8 +22,8 @@ export default {
       ['GET_BY_PARENT_' + config.options.name] (state, { id_parent }) {
         self.getAllByParent(state, id_parent)
       },
-      ['GET_BY_PARENT_LARAVEL_' + config.options.name] (state, { id_parent, dataRelatedLaravel, dataIdRelated }) {
-        self.getAllByParentLaravel(state, id_parent, dataRelatedLaravel, dataIdRelated)
+      ['GET_BY_PARENT_LARAVEL_' + config.options.name] (state, { id_parent, dataRelatedLaravel, dataIdRelated, dataLoadOnParentForm }) {
+        self.getAllByParentLaravel(state, id_parent, dataRelatedLaravel, dataIdRelated, dataLoadOnParentForm)
       },
       ['GET_' + config.options.nameSingle] (state, { id }) {
         self.getItem(state, id)
@@ -61,7 +61,7 @@ export default {
 
     Vue.set(state, 'allByParent', newStates)
   },
-  getAllByParentLaravel (state, id_parent, dataRelatedLaravel, dataIdRelated) {
+  getAllByParentLaravel (state, id_parent, dataRelatedLaravel, dataIdRelated, dataLoadOnParentForm) {
     // Degub
     Vue.$log.debug('MUTATIONS')
 
@@ -79,6 +79,9 @@ export default {
       newStates = state.all.filter( function(item) {
         return item[dataIdRelated] === id_parent
       })
+    }
+    if (dataLoadOnParentForm) { 
+      newStates = state.all
     }
 
     Vue.set(state, 'allByParent', newStates)

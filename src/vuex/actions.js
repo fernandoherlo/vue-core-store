@@ -75,7 +75,17 @@ export default {
       if (config.options.dataFromLaravel) {
         let dataRelatedLaravel = config.options.dataRelatedLaravel
         let dataIdRelated = config.options.dataIdRelated
-        commit('GET_BY_PARENT_LARAVEL_' + config.options.name, { id_parent, dataRelatedLaravel, dataIdRelated })
+        let dataLoadOnParentForm = config.options.dataLoadOnParentForm
+        if (dataLoadOnParentForm) {
+          var _callback = (items) => {
+            commit('RECEIVE_' +  config.options.name, { items })
+            commit('GET_BY_PARENT_LARAVEL_' + config.options.name, { id_parent, dataRelatedLaravel, dataIdRelated, dataLoadOnParentForm })
+            resolve()
+          }
+          Vue.$EventBus.$emit('apiGet', config.options.dataUrl + '/' + id_parent , _callback)
+        } else {
+          commit('GET_BY_PARENT_LARAVEL_' + config.options.name, { id_parent, dataRelatedLaravel, dataIdRelated, dataLoadOnParentForm })
+        }
       } else {
         commit('GET_BY_PARENT_' + config.options.name, { id_parent })
       }

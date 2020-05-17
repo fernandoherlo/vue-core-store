@@ -3322,7 +3322,7 @@ var es_object_assign = __webpack_require__("cca6");
       {
         return true;
       });
-      external_commonjs_vue_commonjs2_vue_root_Vue_default.a.$EventBus.$emit('allByParentSet');
+      external_commonjs_vue_commonjs2_vue_root_Vue_default.a.$EventBus.$emit('storeAllByParentSet');
     }
 
     external_commonjs_vue_commonjs2_vue_root_Vue_default.a.set(state, 'allByParent', newStates);

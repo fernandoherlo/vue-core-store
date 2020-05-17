@@ -87,8 +87,8 @@ export default {
       newStates = state.all.filter( function(/*item*/) {
         return true
       })
+      Vue.$EventBus.$emit('allByParentSet')
     }
-
     Vue.set(state, 'allByParent', newStates)
   },
   getItem (state, id) {

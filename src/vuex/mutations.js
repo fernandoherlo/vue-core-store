@@ -106,8 +106,10 @@ export default {
   clearAll (state) {
     // Degub
     Vue.$log.debug('MUTATIONS')
-    state.all = []
-    state.allByParent = []
+    // state.all = []
+    // state.allByParent = []
+    Vue.set(state, 'all', [])
+    Vue.set(state, 'allByParent', [])
     state.item = {}
     state.clone = {}
   },

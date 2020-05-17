@@ -3034,7 +3034,8 @@ var es_promise = __webpack_require__("e6cf");
         var dataLoadOnParentForm = config.options.dataLoadOnParentForm;
 
         if (dataLoadOnParentForm) {
-          // commit('CLEAR_ALL_' +  config.options.name)
+          commit('CLEAR_ALL_' + config.options.name);
+
           var _callback = function _callback(items) {
             commit('RECEIVE_' + config.options.name, {
               items: items
@@ -3332,9 +3333,11 @@ var es_object_assign = __webpack_require__("cca6");
   },
   clearAll: function clearAll(state) {
     // Degub
-    external_commonjs_vue_commonjs2_vue_root_Vue_default.a.$log.debug('MUTATIONS');
-    state.all = [];
-    state.allByParent = [];
+    external_commonjs_vue_commonjs2_vue_root_Vue_default.a.$log.debug('MUTATIONS'); // state.all = []
+    // state.allByParent = []
+
+    external_commonjs_vue_commonjs2_vue_root_Vue_default.a.set(state, 'all', []);
+    external_commonjs_vue_commonjs2_vue_root_Vue_default.a.set(state, 'allByParent', []);
     state.item = {};
     state.clone = {};
   },

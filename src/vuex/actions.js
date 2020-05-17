@@ -80,7 +80,7 @@ export default {
         let dataIdRelated = config.options.dataIdRelated
         let dataLoadOnParentForm = config.options.dataLoadOnParentForm
         if (dataLoadOnParentForm) {
-          // commit('CLEAR_ALL_' +  config.options.name)
+          commit('CLEAR_ALL_' +  config.options.name)
           var _callback = (items) => {
             commit('RECEIVE_' +  config.options.name, { items })
             commit('GET_BY_PARENT_LARAVEL_' + config.options.name, { id_parent, dataRelatedLaravel, dataIdRelated, dataLoadOnParentForm })

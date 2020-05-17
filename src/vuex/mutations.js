@@ -13,7 +13,7 @@ import Vue from 'vue'
 |
 */
 export default {
-  core (state, config) { // mTypeNamePl, mTypeName
+  core (state, config) {
     var self = this
     return {
       ['RECEIVE_' + config.options.name] (state, { items }) {

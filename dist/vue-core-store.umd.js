@@ -3043,8 +3043,7 @@ var es_promise = __webpack_require__("e6cf");
         var dataLoadOnParentForm = config.options.dataLoadOnParentForm;
 
         if (dataLoadOnParentForm) {
-          commit('CLEAR_ALL_' + config.options.name);
-
+          // commit('CLEAR_ALL_' +  config.options.name)
           var _callback = function _callback(items) {
             commit('RECEIVE_' + config.options.name, {
               items: items
@@ -3245,7 +3244,6 @@ var es_object_assign = __webpack_require__("cca6");
   core: function core(state, config) {
     var _ref8;
 
-    // mTypeNamePl, mTypeName
     var self = this;
     return _ref8 = {}, _defineProperty(_ref8, 'RECEIVE_' + config.options.name, function (state, _ref) {
       var items = _ref.items;

@@ -3302,26 +3302,33 @@ var es_object_assign = __webpack_require__("cca6");
     var newStates = null;
 
     if (dataRelatedLaravel) {
-      newStates = state.all.filter(function (item) {
-        var relateds = item[dataRelatedLaravel].filter(function (related) {
-          return related.id === id_parent;
+      if (state.all.length > 0) {
+        newStates = state.all.filter(function (item) {
+          var relateds = item[dataRelatedLaravel].filter(function (related) {
+            return related.id === id_parent;
+          });
+          return relateds.length > 0;
         });
-        return relateds.length > 0;
-      });
+      }
     }
 
     if (dataIdRelated) {
-      newStates = state.all.filter(function (item) {
-        return item[dataIdRelated] === id_parent;
-      });
+      if (state.all.length > 0) {
+        newStates = state.all.filter(function (item) {
+          return item[dataIdRelated] === id_parent;
+        });
+      }
     }
 
     if (dataLoadOnParentForm) {
-      newStates = state.all.filter(function ()
-      /*item*/
-      {
-        return true;
-      });
+      if (state.all.length > 0) {
+        newStates = state.all.filter(function ()
+        /*item*/
+        {
+          return true;
+        });
+      }
+
       external_commonjs_vue_commonjs2_vue_root_Vue_default.a.$EventBus.$emit('storeAllByParentSet');
     }
 

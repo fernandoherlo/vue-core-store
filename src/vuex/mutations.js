@@ -71,22 +71,28 @@ export default {
     let newStates = null
 
     if (dataRelatedLaravel) { 
-      newStates = state.all.filter( function(item) {
-        let relateds = item[dataRelatedLaravel].filter( function(related) {
-          return related.id === id_parent
+      if (state.all.length > 0) {
+        newStates = state.all.filter( function(item) {
+          let relateds = item[dataRelatedLaravel].filter( function(related) {
+            return related.id === id_parent
+          })
+          return relateds.length > 0
         })
-        return relateds.length > 0
-      })
+      }
     }
-    if (dataIdRelated) { 
-      newStates = state.all.filter( function(item) {
-        return item[dataIdRelated] === id_parent
-      })
+    if (dataIdRelated) {
+      if (state.all.length > 0) {
+        newStates = state.all.filter( function(item) {
+          return item[dataIdRelated] === id_parent
+        })
+      }
     }
     if (dataLoadOnParentForm) { 
-      newStates = state.all.filter( function(/*item*/) {
-        return true
-      })
+      if (state.all.length > 0) {
+        newStates = state.all.filter( function(/*item*/) {
+          return true
+        })
+      }
       Vue.$EventBus.$emit('storeAllByParentSet')
     }
     Vue.set(state, 'allByParent', newStates)

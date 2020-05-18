@@ -34,6 +34,9 @@ export default {
       ['SAVE_' + config.options.nameSingle] (state, { itemApi }) {
         self.saveItem(state, itemApi)
       },
+      ['UPLOAD_' + config.options.nameSingle] (state, { itemApi }) {
+        self.uploadItem(state, itemApi)
+      },
       ['DELETE_' + config.options.nameSingle] (state, { item }) {
         self.deleteItem(state, item)
       },
@@ -173,6 +176,16 @@ export default {
 
     // Return
     return stateEl
+  },
+  /*
+  |--------------------------------------------------------------------------
+  | UPLOAD
+  |--------------------------------------------------------------------------
+  |
+  */
+  uploadItem (/*state, item*/) {
+    // Degub
+    Vue.$log.debug('MUTATIONS')
   },
   /*
   |--------------------------------------------------------------------------

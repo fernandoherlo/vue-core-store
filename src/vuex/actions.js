@@ -31,6 +31,9 @@ export default {
       ['save' + config.options.nameSingle] ({ commit }, item) {
         return self.saveItem(commit, config, item)
       },
+      ['upload' + config.options.nameSingle] ({ commit }, item) {
+        return self.uploadItem(commit, config, item)
+      },
       ['delete' + config.options.nameSingle] ({ commit }, item) {
         return self.deleteItem(commit, config, item)
       },
@@ -148,6 +151,28 @@ export default {
         }
       }
       Vue.$EventBus.$emit('apiSave', config.options.dataUrl, item, _callback)
+    })
+  },
+  /*
+  |--------------------------------------------------------------------------
+  | UPLOAD
+  |--------------------------------------------------------------------------
+  |
+  */
+  uploadItem (commit, config, item) {
+    // Degub
+    Vue.$log.debug('ACTIONS')
+    return new Promise((resolve, reject) => {
+      var _callback = itemApi => {
+        if (itemApi) {
+          commit('UPLOAD_' + config.options.nameSingle, { itemApi })
+          // Param to callback
+          resolve(itemApi)
+        } else {
+          reject(itemApi)
+        }
+      }
+      Vue.$EventBus.$emit('apiUpload', config.options.dataUrl, item, _callback)
     })
   },
   /*

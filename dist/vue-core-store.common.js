@@ -2956,38 +2956,41 @@ var es_promise = __webpack_require__("e6cf");
 
 /* harmony default export */ var vuex_actions = ({
   core: function core(config) {
-    var _ref10;
+    var _ref11;
 
     //mTypeNamePl, mTypeName, dataUrl, displayName
     var self = this;
-    return _ref10 = {}, _defineProperty(_ref10, 'getAll' + config.options.name, function (_ref) {
+    return _ref11 = {}, _defineProperty(_ref11, 'getAll' + config.options.name, function (_ref) {
       var commit = _ref.commit;
       return self.getBaseAll(commit, config);
-    }), _defineProperty(_ref10, 'getByParent' + config.options.name, function (_ref2, id_parent) {
+    }), _defineProperty(_ref11, 'getByParent' + config.options.name, function (_ref2, id_parent) {
       var commit = _ref2.commit;
       return self.getByParent(commit, config, id_parent);
-    }), _defineProperty(_ref10, 'get' + config.options.nameSingle, function (_ref3, id) {
+    }), _defineProperty(_ref11, 'get' + config.options.nameSingle, function (_ref3, id) {
       var commit = _ref3.commit;
       return self.getItem(commit, config, id);
-    }), _defineProperty(_ref10, 'update' + config.options.nameSingle, function (_ref4, item) {
+    }), _defineProperty(_ref11, 'update' + config.options.nameSingle, function (_ref4, item) {
       var commit = _ref4.commit;
       return self.updateItem(commit, config, item);
-    }), _defineProperty(_ref10, 'save' + config.options.nameSingle, function (_ref5, item) {
+    }), _defineProperty(_ref11, 'save' + config.options.nameSingle, function (_ref5, item) {
       var commit = _ref5.commit;
       return self.saveItem(commit, config, item);
-    }), _defineProperty(_ref10, 'delete' + config.options.nameSingle, function (_ref6, item) {
+    }), _defineProperty(_ref11, 'upload' + config.options.nameSingle, function (_ref6, item) {
       var commit = _ref6.commit;
-      return self.deleteItem(commit, config, item);
-    }), _defineProperty(_ref10, 'deleteByParent' + config.options.nameSingle, function (_ref7, item_payload) {
+      return self.uploadItem(commit, config, item);
+    }), _defineProperty(_ref11, 'delete' + config.options.nameSingle, function (_ref7, item) {
       var commit = _ref7.commit;
-      return self.deleteItem(commit, config, item_payload.item, item_payload.id_parent);
-    }), _defineProperty(_ref10, 'clear' + config.options.nameSingle, function (_ref8) {
+      return self.deleteItem(commit, config, item);
+    }), _defineProperty(_ref11, 'deleteByParent' + config.options.nameSingle, function (_ref8, item_payload) {
       var commit = _ref8.commit;
-      return self.clearItem(commit, config);
-    }), _defineProperty(_ref10, 'clearAll' + config.options.name, function (_ref9) {
+      return self.deleteItem(commit, config, item_payload.item, item_payload.id_parent);
+    }), _defineProperty(_ref11, 'clear' + config.options.nameSingle, function (_ref9) {
       var commit = _ref9.commit;
       return self.clearItem(commit, config);
-    }), _ref10;
+    }), _defineProperty(_ref11, 'clearAll' + config.options.name, function (_ref10) {
+      var commit = _ref10.commit;
+      return self.clearItem(commit, config);
+    }), _ref11;
   },
 
   /*
@@ -3138,6 +3141,32 @@ var es_promise = __webpack_require__("e6cf");
 
   /*
   |--------------------------------------------------------------------------
+  | UPLOAD
+  |--------------------------------------------------------------------------
+  |
+  */
+  uploadItem: function uploadItem(commit, config, item) {
+    // Degub
+    external_commonjs_vue_commonjs2_vue_root_Vue_default.a.$log.debug('ACTIONS');
+    return new Promise(function (resolve, reject) {
+      var _callback = function _callback(itemApi) {
+        if (itemApi) {
+          commit('UPLOAD_' + config.options.nameSingle, {
+            itemApi: itemApi
+          }); // Param to callback
+
+          resolve(itemApi);
+        } else {
+          reject(itemApi);
+        }
+      };
+
+      external_commonjs_vue_commonjs2_vue_root_Vue_default.a.$EventBus.$emit('apiUpload', config.options.dataUrl, item, _callback);
+    });
+  },
+
+  /*
+  |--------------------------------------------------------------------------
   | DELETE
   |--------------------------------------------------------------------------
   |
@@ -3234,38 +3263,41 @@ var es_object_assign = __webpack_require__("cca6");
 
 /* harmony default export */ var vuex_mutations = ({
   core: function core(state, config) {
-    var _ref8;
+    var _ref9;
 
     var self = this;
-    return _ref8 = {}, _defineProperty(_ref8, 'RECEIVE_' + config.options.name, function (state, _ref) {
+    return _ref9 = {}, _defineProperty(_ref9, 'RECEIVE_' + config.options.name, function (state, _ref) {
       var items = _ref.items;
       self.getAll(state, items);
-    }), _defineProperty(_ref8, 'GET_BY_PARENT_' + config.options.name, function (state, _ref2) {
+    }), _defineProperty(_ref9, 'GET_BY_PARENT_' + config.options.name, function (state, _ref2) {
       var id_parent = _ref2.id_parent;
       self.getAllByParent(state, id_parent);
-    }), _defineProperty(_ref8, 'GET_BY_PARENT_LARAVEL_' + config.options.name, function (state, _ref3) {
+    }), _defineProperty(_ref9, 'GET_BY_PARENT_LARAVEL_' + config.options.name, function (state, _ref3) {
       var id_parent = _ref3.id_parent,
           dataRelatedLaravel = _ref3.dataRelatedLaravel,
           dataIdRelated = _ref3.dataIdRelated,
           dataLoadOnParentForm = _ref3.dataLoadOnParentForm;
       self.getAllByParentLaravel(state, id_parent, dataRelatedLaravel, dataIdRelated, dataLoadOnParentForm);
-    }), _defineProperty(_ref8, 'GET_' + config.options.nameSingle, function (state, _ref4) {
+    }), _defineProperty(_ref9, 'GET_' + config.options.nameSingle, function (state, _ref4) {
       var id = _ref4.id;
       self.getItem(state, id);
-    }), _defineProperty(_ref8, 'UPDATE_' + config.options.nameSingle, function (state, _ref5) {
+    }), _defineProperty(_ref9, 'UPDATE_' + config.options.nameSingle, function (state, _ref5) {
       var itemApi = _ref5.itemApi;
       self.updateItem(state, itemApi);
-    }), _defineProperty(_ref8, 'SAVE_' + config.options.nameSingle, function (state, _ref6) {
+    }), _defineProperty(_ref9, 'SAVE_' + config.options.nameSingle, function (state, _ref6) {
       var itemApi = _ref6.itemApi;
       self.saveItem(state, itemApi);
-    }), _defineProperty(_ref8, 'DELETE_' + config.options.nameSingle, function (state, _ref7) {
-      var item = _ref7.item;
+    }), _defineProperty(_ref9, 'UPLOAD_' + config.options.nameSingle, function (state, _ref7) {
+      var itemApi = _ref7.itemApi;
+      self.uploadItem(state, itemApi);
+    }), _defineProperty(_ref9, 'DELETE_' + config.options.nameSingle, function (state, _ref8) {
+      var item = _ref8.item;
       self.deleteItem(state, item);
-    }), _defineProperty(_ref8, 'CLEAR_' + config.options.nameSingle, function (state) {
+    }), _defineProperty(_ref9, 'CLEAR_' + config.options.nameSingle, function (state) {
       self.clearItem(state);
-    }), _defineProperty(_ref8, 'CLEAR_ALL_' + config.options.name, function (state) {
+    }), _defineProperty(_ref9, 'CLEAR_ALL_' + config.options.name, function (state) {
       self.clearAll(state);
-    }), _ref8;
+    }), _ref9;
   },
 
   /*
@@ -3407,6 +3439,19 @@ var es_object_assign = __webpack_require__("cca6");
     stateEl.push(clone); // Return
 
     return stateEl;
+  },
+
+  /*
+  |--------------------------------------------------------------------------
+  | UPLOAD
+  |--------------------------------------------------------------------------
+  |
+  */
+  uploadItem: function uploadItem()
+  /*state, item*/
+  {
+    // Degub
+    external_commonjs_vue_commonjs2_vue_root_Vue_default.a.$log.debug('MUTATIONS');
   },
 
   /*

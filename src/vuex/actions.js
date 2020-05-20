@@ -16,34 +16,34 @@ export default {
   core (config) { //mTypeNamePl, mTypeName, dataUrl, displayName
     var self = this
     return {
-      ['getAll' + config.options.nameVuex] ({ commit }) {
+      ['getAll' + config.options.name] ({ commit }) {
         return self.getBaseAll(commit, config)
       },
-      ['getByParent' + config.options.nameVuex] ({ commit }, id_parent) {
+      ['getByParent' + config.options.name] ({ commit }, id_parent) {
         return self.getByParent(commit, config, id_parent)
       },
-      ['get' + config.options.nameSingleVuex] ({ commit }, id) {
+      ['get' + config.options.nameSingle] ({ commit }, id) {
         return self.getItem(commit, config, id)
       },
-      ['update' + config.options.nameSingleVuex] ({ commit }, item) {
+      ['update' + config.options.nameSingle] ({ commit }, item) {
         return self.updateItem(commit, config, item)
       },
-      ['save' + config.options.nameSingleVuex] ({ commit }, item) {
+      ['save' + config.options.nameSingle] ({ commit }, item) {
         return self.saveItem(commit, config, item)
       },
-      ['upload' + config.options.nameSingleVuex] ({ commit }, item) {
+      ['upload' + config.options.nameSingle] ({ commit }, item) {
         return self.uploadItem(commit, config, item)
       },
-      ['delete' + config.options.nameSingleVuex] ({ commit }, item) {
+      ['delete' + config.options.nameSingle] ({ commit }, item) {
         return self.deleteItem(commit, config, item)
       },
-      ['deleteByParent' + config.options.nameSingleVuex] ({ commit }, item_payload) {
+      ['deleteByParent' + config.options.nameSingle] ({ commit }, item_payload) {
         return self.deleteItem(commit, config, item_payload.item, item_payload.id_parent)
       },
-      ['clear' + config.options.nameSingleVuex] ({ commit }) {
+      ['clear' + config.options.nameSingle] ({ commit }) {
         return self.clearItem(commit, config)
       },
-      ['clearAll' + config.options.nameVuex] ({ commit }) {
+      ['clearAll' + config.options.name] ({ commit }) {
         return self.clearItem(commit, config)
       }
     }

@@ -1585,6 +1585,35 @@ module.exports = TO_STRING_TAG_SUPPORT ? {}.toString : function toString() {
 
 /***/ }),
 
+/***/ "b0c0":
+/***/ (function(module, exports, __webpack_require__) {
+
+var DESCRIPTORS = __webpack_require__("83ab");
+var defineProperty = __webpack_require__("9bf2").f;
+
+var FunctionPrototype = Function.prototype;
+var FunctionPrototypeToString = FunctionPrototype.toString;
+var nameRE = /^\s*function ([^ (]*)/;
+var NAME = 'name';
+
+// Function instances `.name` property
+// https://tc39.github.io/ecma262/#sec-function-instances-name
+if (DESCRIPTORS && !(NAME in FunctionPrototype)) {
+  defineProperty(FunctionPrototype, NAME, {
+    configurable: true,
+    get: function () {
+      try {
+        return FunctionPrototypeToString.call(this).match(nameRE)[1];
+      } catch (error) {
+        return '';
+      }
+    }
+  });
+}
+
+
+/***/ }),
+
 /***/ "b575":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2895,6 +2924,9 @@ var mutations = (_mutations = {}, _defineProperty(_mutations, 'RECEIVE_LOAD', fu
     }), _ref;
   }
 });
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.function.name.js
+var es_function_name = __webpack_require__("b0c0");
+
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.object.to-string.js
 var es_object_to_string = __webpack_require__("d3b7");
 
@@ -2902,6 +2934,7 @@ var es_object_to_string = __webpack_require__("d3b7");
 var es_promise = __webpack_require__("e6cf");
 
 // CONCATENATED MODULE: ./src/vuex/actions.js
+
 
 
 
@@ -2926,34 +2959,34 @@ var es_promise = __webpack_require__("e6cf");
 
     //mTypeNamePl, mTypeName, dataUrl, displayName
     var self = this;
-    return _ref11 = {}, _defineProperty(_ref11, 'getAll' + config.options.nameVuex, function (_ref) {
+    return _ref11 = {}, _defineProperty(_ref11, 'getAll' + config.options.name, function (_ref) {
       var commit = _ref.commit;
       return self.getBaseAll(commit, config);
-    }), _defineProperty(_ref11, 'getByParent' + config.options.nameVuex, function (_ref2, id_parent) {
+    }), _defineProperty(_ref11, 'getByParent' + config.options.name, function (_ref2, id_parent) {
       var commit = _ref2.commit;
       return self.getByParent(commit, config, id_parent);
-    }), _defineProperty(_ref11, 'get' + config.options.nameSingleVuex, function (_ref3, id) {
+    }), _defineProperty(_ref11, 'get' + config.options.nameSingle, function (_ref3, id) {
       var commit = _ref3.commit;
       return self.getItem(commit, config, id);
-    }), _defineProperty(_ref11, 'update' + config.options.nameSingleVuex, function (_ref4, item) {
+    }), _defineProperty(_ref11, 'update' + config.options.nameSingle, function (_ref4, item) {
       var commit = _ref4.commit;
       return self.updateItem(commit, config, item);
-    }), _defineProperty(_ref11, 'save' + config.options.nameSingleVuex, function (_ref5, item) {
+    }), _defineProperty(_ref11, 'save' + config.options.nameSingle, function (_ref5, item) {
       var commit = _ref5.commit;
       return self.saveItem(commit, config, item);
-    }), _defineProperty(_ref11, 'upload' + config.options.nameSingleVuex, function (_ref6, item) {
+    }), _defineProperty(_ref11, 'upload' + config.options.nameSingle, function (_ref6, item) {
       var commit = _ref6.commit;
       return self.uploadItem(commit, config, item);
-    }), _defineProperty(_ref11, 'delete' + config.options.nameSingleVuex, function (_ref7, item) {
+    }), _defineProperty(_ref11, 'delete' + config.options.nameSingle, function (_ref7, item) {
       var commit = _ref7.commit;
       return self.deleteItem(commit, config, item);
-    }), _defineProperty(_ref11, 'deleteByParent' + config.options.nameSingleVuex, function (_ref8, item_payload) {
+    }), _defineProperty(_ref11, 'deleteByParent' + config.options.nameSingle, function (_ref8, item_payload) {
       var commit = _ref8.commit;
       return self.deleteItem(commit, config, item_payload.item, item_payload.id_parent);
-    }), _defineProperty(_ref11, 'clear' + config.options.nameSingleVuex, function (_ref9) {
+    }), _defineProperty(_ref11, 'clear' + config.options.nameSingle, function (_ref9) {
       var commit = _ref9.commit;
       return self.clearItem(commit, config);
-    }), _defineProperty(_ref11, 'clearAll' + config.options.nameVuex, function (_ref10) {
+    }), _defineProperty(_ref11, 'clearAll' + config.options.name, function (_ref10) {
       var commit = _ref10.commit;
       return self.clearItem(commit, config);
     }), _ref11;

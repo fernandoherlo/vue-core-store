@@ -163,16 +163,17 @@ export default {
     // Degub
     Vue.$log.debug('ACTIONS')
     return new Promise((resolve, reject) => {
-      var _callback = itemApi => {
-        if (itemApi) {
-          if (Array.isArray(itemApi)) {
-            itemApi.forEach(element => {
+      var _callback = itemApiC => {
+        if (itemApiC) {
+          if (Array.isArray(itemApiC)) {
+            itemApiC.forEach(itemApi => {
               // mutation
-              commit('UPLOAD_' + config.options.nameSingleVuex, { element })
+              commit('UPLOAD_' + config.options.nameSingleVuex, { itemApi })
             })
             // Param to callback
-            resolve(itemApi[0])  
+            resolve(itemApiC[0])  
           } else {
+            let itemApi = itemApiC
             // mutation
             commit('UPLOAD_' + config.options.nameSingleVuex, { itemApi })
             // Param to callback
@@ -180,7 +181,7 @@ export default {
           }
 
         } else {
-          reject(itemApi)
+          reject(itemApiC)
         }
       }
       Vue.$EventBus.$emit('apiUpload', config.options.dataUrl, item, _callback)

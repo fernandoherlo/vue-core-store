@@ -3234,19 +3234,20 @@ var web_dom_collections_for_each = __webpack_require__("159b");
     // Degub
     external_commonjs_vue_commonjs2_vue_root_Vue_default.a.$log.debug('ACTIONS');
     return new Promise(function (resolve, reject) {
-      var _callback = function _callback(itemApi) {
-        if (itemApi) {
-          if (Array.isArray(itemApi)) {
-            itemApi.forEach(function (element) {
+      var _callback = function _callback(itemApiC) {
+        if (itemApiC) {
+          if (Array.isArray(itemApiC)) {
+            itemApiC.forEach(function (itemApi) {
               // mutation
               commit('UPLOAD_' + config.options.nameSingleVuex, {
-                element: element
+                itemApi: itemApi
               });
             }); // Param to callback
 
-            resolve(itemApi[0]);
+            resolve(itemApiC[0]);
           } else {
-            // mutation
+            var itemApi = itemApiC; // mutation
+
             commit('UPLOAD_' + config.options.nameSingleVuex, {
               itemApi: itemApi
             }); // Param to callback
@@ -3254,7 +3255,7 @@ var web_dom_collections_for_each = __webpack_require__("159b");
             resolve(itemApi);
           }
         } else {
-          reject(itemApi);
+          reject(itemApiC);
         }
       };
 

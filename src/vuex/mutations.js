@@ -16,34 +16,34 @@ export default {
   core (state, config) {
     var self = this
     return {
-      ['RECEIVE_' + config.options.name] (state, { items }) {
+      ['RECEIVE_' + config.options.nameVuex] (state, { items }) {
         self.getAll(state, items)
       },
-      ['GET_BY_PARENT_' + config.options.name] (state, { id_parent }) {
+      ['GET_BY_PARENT_' + config.options.nameVuex] (state, { id_parent }) {
         self.getAllByParent(state, id_parent)
       },
-      ['GET_BY_PARENT_LARAVEL_' + config.options.name] (state, { id_parent, dataRelatedLaravel, dataIdRelated, dataLoadOnParentForm }) {
+      ['GET_BY_PARENT_LARAVEL_' + config.options.nameVuex] (state, { id_parent, dataRelatedLaravel, dataIdRelated, dataLoadOnParentForm }) {
         self.getAllByParentLaravel(state, id_parent, dataRelatedLaravel, dataIdRelated, dataLoadOnParentForm)
       },
-      ['GET_' + config.options.nameSingle] (state, { id }) {
+      ['GET_' + config.options.nameSingleVuex] (state, { id }) {
         self.getItem(state, id)
       },
-      ['UPDATE_' + config.options.nameSingle] (state, { itemApi }) {
+      ['UPDATE_' + config.options.nameSingleVuex] (state, { itemApi }) {
         self.updateItem(state, itemApi)
       },
-      ['SAVE_' + config.options.nameSingle] (state, { itemApi }) {
+      ['SAVE_' + config.options.nameSingleVuex] (state, { itemApi }) {
         self.saveItem(state, itemApi)
       },
-      ['UPLOAD_' + config.options.nameSingle] (state, { itemApi }) {
+      ['UPLOAD_' + config.options.nameSingleVuex] (state, { itemApi }) {
         self.uploadItem(state, itemApi)
       },
-      ['DELETE_' + config.options.nameSingle] (state, { item }) {
+      ['DELETE_' + config.options.nameSingleVuex] (state, { item }) {
         self.deleteItem(state, item)
       },
-      ['CLEAR_' + config.options.nameSingle] (state) {
+      ['CLEAR_' + config.options.nameSingleVuex] (state) {
         self.clearItem(state)
       },
-      ['CLEAR_ALL_' + config.options.name] (state) {
+      ['CLEAR_ALL_' + config.options.nameVuex] (state) {
         self.clearAll(state)
       }
     }

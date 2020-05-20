@@ -1585,35 +1585,6 @@ module.exports = TO_STRING_TAG_SUPPORT ? {}.toString : function toString() {
 
 /***/ }),
 
-/***/ "b0c0":
-/***/ (function(module, exports, __webpack_require__) {
-
-var DESCRIPTORS = __webpack_require__("83ab");
-var defineProperty = __webpack_require__("9bf2").f;
-
-var FunctionPrototype = Function.prototype;
-var FunctionPrototypeToString = FunctionPrototype.toString;
-var nameRE = /^\s*function ([^ (]*)/;
-var NAME = 'name';
-
-// Function instances `.name` property
-// https://tc39.github.io/ecma262/#sec-function-instances-name
-if (DESCRIPTORS && !(NAME in FunctionPrototype)) {
-  defineProperty(FunctionPrototype, NAME, {
-    configurable: true,
-    get: function () {
-      try {
-        return FunctionPrototypeToString.call(this).match(nameRE)[1];
-      } catch (error) {
-        return '';
-      }
-    }
-  });
-}
-
-
-/***/ }),
-
 /***/ "b575":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2899,11 +2870,7 @@ var mutations = (_mutations = {}, _defineProperty(_mutations, 'RECEIVE_LOAD', fu
   actions: actions,
   mutations: mutations
 });
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.function.name.js
-var es_function_name = __webpack_require__("b0c0");
-
 // CONCATENATED MODULE: ./src/vuex/getters.js
-
 
 
 /*
@@ -2917,13 +2884,13 @@ var es_function_name = __webpack_require__("b0c0");
     var _ref;
 
     // mTypeNamePl, mTypeName
-    return _ref = {}, _defineProperty(_ref, 'all' + config.options.name, function (state) {
+    return _ref = {}, _defineProperty(_ref, 'all' + config.options.nameVuex, function (state) {
       return state.all;
-    }), _defineProperty(_ref, 'allByParent' + config.options.name, function (state) {
+    }), _defineProperty(_ref, 'allByParent' + config.options.nameVuex, function (state) {
       return state.allByParent;
-    }), _defineProperty(_ref, config.options.nameSingle, function (state) {
+    }), _defineProperty(_ref, config.options.nameSingleVuex, function (state) {
       return state.item;
-    }), _defineProperty(_ref, 'clone' + config.options.nameSingle, function (state) {
+    }), _defineProperty(_ref, 'clone' + config.options.nameSingleVuex, function (state) {
       return state.clone;
     }), _ref;
   }
@@ -2935,7 +2902,6 @@ var es_object_to_string = __webpack_require__("d3b7");
 var es_promise = __webpack_require__("e6cf");
 
 // CONCATENATED MODULE: ./src/vuex/actions.js
-
 
 
 
@@ -2960,34 +2926,34 @@ var es_promise = __webpack_require__("e6cf");
 
     //mTypeNamePl, mTypeName, dataUrl, displayName
     var self = this;
-    return _ref11 = {}, _defineProperty(_ref11, 'getAll' + config.options.name, function (_ref) {
+    return _ref11 = {}, _defineProperty(_ref11, 'getAll' + config.options.nameVuex, function (_ref) {
       var commit = _ref.commit;
       return self.getBaseAll(commit, config);
-    }), _defineProperty(_ref11, 'getByParent' + config.options.name, function (_ref2, id_parent) {
+    }), _defineProperty(_ref11, 'getByParent' + config.options.nameVuex, function (_ref2, id_parent) {
       var commit = _ref2.commit;
       return self.getByParent(commit, config, id_parent);
-    }), _defineProperty(_ref11, 'get' + config.options.nameSingle, function (_ref3, id) {
+    }), _defineProperty(_ref11, 'get' + config.options.nameSingleVuex, function (_ref3, id) {
       var commit = _ref3.commit;
       return self.getItem(commit, config, id);
-    }), _defineProperty(_ref11, 'update' + config.options.nameSingle, function (_ref4, item) {
+    }), _defineProperty(_ref11, 'update' + config.options.nameSingleVuex, function (_ref4, item) {
       var commit = _ref4.commit;
       return self.updateItem(commit, config, item);
-    }), _defineProperty(_ref11, 'save' + config.options.nameSingle, function (_ref5, item) {
+    }), _defineProperty(_ref11, 'save' + config.options.nameSingleVuex, function (_ref5, item) {
       var commit = _ref5.commit;
       return self.saveItem(commit, config, item);
-    }), _defineProperty(_ref11, 'upload' + config.options.nameSingle, function (_ref6, item) {
+    }), _defineProperty(_ref11, 'upload' + config.options.nameSingleVuex, function (_ref6, item) {
       var commit = _ref6.commit;
       return self.uploadItem(commit, config, item);
-    }), _defineProperty(_ref11, 'delete' + config.options.nameSingle, function (_ref7, item) {
+    }), _defineProperty(_ref11, 'delete' + config.options.nameSingleVuex, function (_ref7, item) {
       var commit = _ref7.commit;
       return self.deleteItem(commit, config, item);
-    }), _defineProperty(_ref11, 'deleteByParent' + config.options.nameSingle, function (_ref8, item_payload) {
+    }), _defineProperty(_ref11, 'deleteByParent' + config.options.nameSingleVuex, function (_ref8, item_payload) {
       var commit = _ref8.commit;
       return self.deleteItem(commit, config, item_payload.item, item_payload.id_parent);
-    }), _defineProperty(_ref11, 'clear' + config.options.nameSingle, function (_ref9) {
+    }), _defineProperty(_ref11, 'clear' + config.options.nameSingleVuex, function (_ref9) {
       var commit = _ref9.commit;
       return self.clearItem(commit, config);
-    }), _defineProperty(_ref11, 'clearAll' + config.options.name, function (_ref10) {
+    }), _defineProperty(_ref11, 'clearAll' + config.options.nameVuex, function (_ref10) {
       var commit = _ref10.commit;
       return self.clearItem(commit, config);
     }), _ref11;
@@ -3008,7 +2974,7 @@ var es_promise = __webpack_require__("e6cf");
       external_commonjs_vue_commonjs2_vue_root_Vue_default.a.$log.debug('promise --');
 
       var _callback = function _callback(items) {
-        commit('RECEIVE_' + config.options.name, {
+        commit('RECEIVE_' + config.options.nameVuex, {
           items: items
         });
         commit('RECEIVE_LOAD_PARTIAL', config.options.displayName);
@@ -3037,13 +3003,13 @@ var es_promise = __webpack_require__("e6cf");
         var dataLoadOnParentForm = config.options.dataLoadOnParentForm;
 
         if (dataLoadOnParentForm) {
-          commit('CLEAR_ALL_' + config.options.name);
+          commit('CLEAR_ALL_' + config.options.nameVuex);
 
           var _callback = function _callback(items) {
-            commit('RECEIVE_' + config.options.name, {
+            commit('RECEIVE_' + config.options.nameVuex, {
               items: items
             });
-            commit('GET_BY_PARENT_LARAVEL_' + config.options.name, {
+            commit('GET_BY_PARENT_LARAVEL_' + config.options.nameVuex, {
               id_parent: id_parent,
               dataRelatedLaravel: dataRelatedLaravel,
               dataIdRelated: dataIdRelated,
@@ -3054,7 +3020,7 @@ var es_promise = __webpack_require__("e6cf");
 
           external_commonjs_vue_commonjs2_vue_root_Vue_default.a.$EventBus.$emit('apiGet', config.options.dataUrl + '/' + id_parent, _callback);
         } else {
-          commit('GET_BY_PARENT_LARAVEL_' + config.options.name, {
+          commit('GET_BY_PARENT_LARAVEL_' + config.options.nameVuex, {
             id_parent: id_parent,
             dataRelatedLaravel: dataRelatedLaravel,
             dataIdRelated: dataIdRelated,
@@ -3063,7 +3029,7 @@ var es_promise = __webpack_require__("e6cf");
           resolve();
         }
       } else {
-        commit('GET_BY_PARENT_' + config.options.name, {
+        commit('GET_BY_PARENT_' + config.options.nameVuex, {
           id_parent: id_parent
         });
         resolve();
@@ -3083,7 +3049,7 @@ var es_promise = __webpack_require__("e6cf");
     return new Promise(function (resolve
     /*, reject*/
     ) {
-      commit('GET_' + config.options.nameSingle, {
+      commit('GET_' + config.options.nameSingleVuex, {
         id: id
       });
       resolve();
@@ -3103,7 +3069,7 @@ var es_promise = __webpack_require__("e6cf");
     /*, reject*/
     ) {
       var _callback = function _callback(itemApi) {
-        commit('UPDATE_' + config.options.nameSingle, {
+        commit('UPDATE_' + config.options.nameSingleVuex, {
           itemApi: itemApi
         });
         resolve();
@@ -3125,7 +3091,7 @@ var es_promise = __webpack_require__("e6cf");
     return new Promise(function (resolve, reject) {
       var _callback = function _callback(itemApi) {
         if (itemApi) {
-          commit('SAVE_' + config.options.nameSingle, {
+          commit('SAVE_' + config.options.nameSingleVuex, {
             itemApi: itemApi
           }); // Param to callback
 
@@ -3151,7 +3117,7 @@ var es_promise = __webpack_require__("e6cf");
     return new Promise(function (resolve, reject) {
       var _callback = function _callback(itemApi) {
         if (itemApi) {
-          commit('UPLOAD_' + config.options.nameSingle, {
+          commit('UPLOAD_' + config.options.nameSingleVuex, {
             itemApi: itemApi
           }); // Param to callback
 
@@ -3179,7 +3145,7 @@ var es_promise = __webpack_require__("e6cf");
     ) {
       // eslint-disable-next-line no-unused-vars
       var _callback = function _callback(itemApi) {
-        commit('DELETE_' + config.options.nameSingle, {
+        commit('DELETE_' + config.options.nameSingleVuex, {
           item: item
         });
         resolve();
@@ -3205,7 +3171,7 @@ var es_promise = __webpack_require__("e6cf");
     return new Promise(function (resolve
     /*, reject*/
     ) {
-      commit('CLEAR_' + config.options.nameSingle);
+      commit('CLEAR_' + config.options.nameSingleVuex);
       resolve();
     });
   },
@@ -3222,7 +3188,7 @@ var es_promise = __webpack_require__("e6cf");
     return new Promise(function (resolve
     /*, reject*/
     ) {
-      commit('CLEAR_ALL_' + config.options.name);
+      commit('CLEAR_ALL_' + config.options.nameVuex);
       resolve();
     });
   }
@@ -3240,7 +3206,6 @@ var es_array_splice = __webpack_require__("a434");
 var es_object_assign = __webpack_require__("cca6");
 
 // CONCATENATED MODULE: ./src/vuex/mutations.js
-
 
 
 
@@ -3266,36 +3231,36 @@ var es_object_assign = __webpack_require__("cca6");
     var _ref9;
 
     var self = this;
-    return _ref9 = {}, _defineProperty(_ref9, 'RECEIVE_' + config.options.name, function (state, _ref) {
+    return _ref9 = {}, _defineProperty(_ref9, 'RECEIVE_' + config.options.nameVuex, function (state, _ref) {
       var items = _ref.items;
       self.getAll(state, items);
-    }), _defineProperty(_ref9, 'GET_BY_PARENT_' + config.options.name, function (state, _ref2) {
+    }), _defineProperty(_ref9, 'GET_BY_PARENT_' + config.options.nameVuex, function (state, _ref2) {
       var id_parent = _ref2.id_parent;
       self.getAllByParent(state, id_parent);
-    }), _defineProperty(_ref9, 'GET_BY_PARENT_LARAVEL_' + config.options.name, function (state, _ref3) {
+    }), _defineProperty(_ref9, 'GET_BY_PARENT_LARAVEL_' + config.options.nameVuex, function (state, _ref3) {
       var id_parent = _ref3.id_parent,
           dataRelatedLaravel = _ref3.dataRelatedLaravel,
           dataIdRelated = _ref3.dataIdRelated,
           dataLoadOnParentForm = _ref3.dataLoadOnParentForm;
       self.getAllByParentLaravel(state, id_parent, dataRelatedLaravel, dataIdRelated, dataLoadOnParentForm);
-    }), _defineProperty(_ref9, 'GET_' + config.options.nameSingle, function (state, _ref4) {
+    }), _defineProperty(_ref9, 'GET_' + config.options.nameSingleVuex, function (state, _ref4) {
       var id = _ref4.id;
       self.getItem(state, id);
-    }), _defineProperty(_ref9, 'UPDATE_' + config.options.nameSingle, function (state, _ref5) {
+    }), _defineProperty(_ref9, 'UPDATE_' + config.options.nameSingleVuex, function (state, _ref5) {
       var itemApi = _ref5.itemApi;
       self.updateItem(state, itemApi);
-    }), _defineProperty(_ref9, 'SAVE_' + config.options.nameSingle, function (state, _ref6) {
+    }), _defineProperty(_ref9, 'SAVE_' + config.options.nameSingleVuex, function (state, _ref6) {
       var itemApi = _ref6.itemApi;
       self.saveItem(state, itemApi);
-    }), _defineProperty(_ref9, 'UPLOAD_' + config.options.nameSingle, function (state, _ref7) {
+    }), _defineProperty(_ref9, 'UPLOAD_' + config.options.nameSingleVuex, function (state, _ref7) {
       var itemApi = _ref7.itemApi;
       self.uploadItem(state, itemApi);
-    }), _defineProperty(_ref9, 'DELETE_' + config.options.nameSingle, function (state, _ref8) {
+    }), _defineProperty(_ref9, 'DELETE_' + config.options.nameSingleVuex, function (state, _ref8) {
       var item = _ref8.item;
       self.deleteItem(state, item);
-    }), _defineProperty(_ref9, 'CLEAR_' + config.options.nameSingle, function (state) {
+    }), _defineProperty(_ref9, 'CLEAR_' + config.options.nameSingleVuex, function (state) {
       self.clearItem(state);
-    }), _defineProperty(_ref9, 'CLEAR_ALL_' + config.options.name, function (state) {
+    }), _defineProperty(_ref9, 'CLEAR_ALL_' + config.options.nameVuex, function (state) {
       self.clearAll(state);
     }), _ref9;
   },

@@ -3553,11 +3553,11 @@ var es_object_assign = __webpack_require__("cca6");
   |--------------------------------------------------------------------------
   |
   */
-  uploadItem: function uploadItem()
-  /*state, item*/
-  {
+  uploadItem: function uploadItem(state, item) {
     // Degub
-    external_commonjs_vue_commonjs2_vue_root_Vue_default.a.$log.debug('MUTATIONS');
+    external_commonjs_vue_commonjs2_vue_root_Vue_default.a.$log.debug('MUTATIONS'); // Save 
+
+    this.saveItem(state, item);
   },
 
   /*

@@ -183,9 +183,11 @@ export default {
   |--------------------------------------------------------------------------
   |
   */
-  uploadItem (/*state, item*/) {
+  uploadItem (state, item) {
     // Degub
     Vue.$log.debug('MUTATIONS')
+    // Save 
+    this.saveItem(state, item)
   },
   /*
   |--------------------------------------------------------------------------

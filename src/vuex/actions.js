@@ -31,6 +31,9 @@ export default {
       ['save' + config.options.nameSingle] ({ commit }, item) {
         return self.saveItem(commit, config, item)
       },
+      ['order' + config.options.nameSingle] ({ commit }, item) {
+        return self.orderItem(commit, config, item)
+      },
       ['upload' + config.options.nameSingle] ({ commit }, item) {
         return self.uploadItem(commit, config, item)
       },
@@ -151,6 +154,24 @@ export default {
         }
       }
       Vue.$EventBus.$emit('apiSave', config.options.dataUrl, item, _callback)
+    })
+  },
+  /*
+  |--------------------------------------------------------------------------
+  | SAVE
+  |--------------------------------------------------------------------------
+  |
+  */
+  orderItem (commit, config, item) {
+    // Degub
+    Vue.$log.debug('ACTIONS')
+    return new Promise((resolve/*, reject*/) => {
+      var _callback = () => {
+        this.getBaseAll(commit, config)
+        // Param to callback
+        resolve()
+      }
+      Vue.$EventBus.$emit('apiOrder', config.options.dataUrl, item, _callback)
     })
   },
   /*

@@ -3041,41 +3041,44 @@ var web_dom_collections_for_each = __webpack_require__("159b");
 
 /* harmony default export */ var vuex_actions = ({
   core: function core(config) {
-    var _ref11;
+    var _ref12;
 
     //mTypeNamePl, mTypeName, dataUrl, displayName
     var self = this;
-    return _ref11 = {}, _defineProperty(_ref11, 'getAll' + config.options.name, function (_ref) {
+    return _ref12 = {}, _defineProperty(_ref12, 'getAll' + config.options.name, function (_ref) {
       var commit = _ref.commit;
       return self.getBaseAll(commit, config);
-    }), _defineProperty(_ref11, 'getByParent' + config.options.name, function (_ref2, id_parent) {
+    }), _defineProperty(_ref12, 'getByParent' + config.options.name, function (_ref2, id_parent) {
       var commit = _ref2.commit;
       return self.getByParent(commit, config, id_parent);
-    }), _defineProperty(_ref11, 'get' + config.options.nameSingle, function (_ref3, id) {
+    }), _defineProperty(_ref12, 'get' + config.options.nameSingle, function (_ref3, id) {
       var commit = _ref3.commit;
       return self.getItem(commit, config, id);
-    }), _defineProperty(_ref11, 'update' + config.options.nameSingle, function (_ref4, item) {
+    }), _defineProperty(_ref12, 'update' + config.options.nameSingle, function (_ref4, item) {
       var commit = _ref4.commit;
       return self.updateItem(commit, config, item);
-    }), _defineProperty(_ref11, 'save' + config.options.nameSingle, function (_ref5, item) {
+    }), _defineProperty(_ref12, 'save' + config.options.nameSingle, function (_ref5, item) {
       var commit = _ref5.commit;
       return self.saveItem(commit, config, item);
-    }), _defineProperty(_ref11, 'upload' + config.options.nameSingle, function (_ref6, item) {
+    }), _defineProperty(_ref12, 'order' + config.options.nameSingle, function (_ref6, item) {
       var commit = _ref6.commit;
-      return self.uploadItem(commit, config, item);
-    }), _defineProperty(_ref11, 'delete' + config.options.nameSingle, function (_ref7, item) {
+      return self.orderItem(commit, config, item);
+    }), _defineProperty(_ref12, 'upload' + config.options.nameSingle, function (_ref7, item) {
       var commit = _ref7.commit;
-      return self.deleteItem(commit, config, item);
-    }), _defineProperty(_ref11, 'deleteByParent' + config.options.nameSingle, function (_ref8, item_payload) {
+      return self.uploadItem(commit, config, item);
+    }), _defineProperty(_ref12, 'delete' + config.options.nameSingle, function (_ref8, item) {
       var commit = _ref8.commit;
-      return self.deleteItem(commit, config, item_payload.item, item_payload.id_parent);
-    }), _defineProperty(_ref11, 'clear' + config.options.nameSingle, function (_ref9) {
+      return self.deleteItem(commit, config, item);
+    }), _defineProperty(_ref12, 'deleteByParent' + config.options.nameSingle, function (_ref9, item_payload) {
       var commit = _ref9.commit;
-      return self.clearItem(commit, config);
-    }), _defineProperty(_ref11, 'clearAll' + config.options.name, function (_ref10) {
+      return self.deleteItem(commit, config, item_payload.item, item_payload.id_parent);
+    }), _defineProperty(_ref12, 'clear' + config.options.nameSingle, function (_ref10) {
       var commit = _ref10.commit;
       return self.clearItem(commit, config);
-    }), _ref11;
+    }), _defineProperty(_ref12, 'clearAll' + config.options.name, function (_ref11) {
+      var commit = _ref11.commit;
+      return self.clearItem(commit, config);
+    }), _ref12;
   },
 
   /*
@@ -3221,6 +3224,31 @@ var web_dom_collections_for_each = __webpack_require__("159b");
       };
 
       external_commonjs_vue_commonjs2_vue_root_Vue_default.a.$EventBus.$emit('apiSave', config.options.dataUrl, item, _callback);
+    });
+  },
+
+  /*
+  |--------------------------------------------------------------------------
+  | SAVE
+  |--------------------------------------------------------------------------
+  |
+  */
+  orderItem: function orderItem(commit, config, item) {
+    var _this = this;
+
+    // Degub
+    external_commonjs_vue_commonjs2_vue_root_Vue_default.a.$log.debug('ACTIONS');
+    return new Promise(function (resolve
+    /*, reject*/
+    ) {
+      var _callback = function _callback() {
+        _this.getBaseAll(commit, config); // Param to callback
+
+
+        resolve();
+      };
+
+      external_commonjs_vue_commonjs2_vue_root_Vue_default.a.$EventBus.$emit('apiOrder', config.options.dataUrl, item, _callback);
     });
   },
 

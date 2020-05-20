@@ -165,9 +165,20 @@ export default {
     return new Promise((resolve, reject) => {
       var _callback = itemApi => {
         if (itemApi) {
-          commit('UPLOAD_' + config.options.nameSingleVuex, { itemApi })
-          // Param to callback
-          resolve(itemApi)
+          if (Array.isArray(itemApi)) {
+            itemApi.forEach(element => {
+              // mutation
+              commit('UPLOAD_' + config.options.nameSingleVuex, { element })
+            })
+            // Param to callback
+            resolve(itemApi[0])  
+          } else {
+            // mutation
+            commit('UPLOAD_' + config.options.nameSingleVuex, { itemApi })
+            // Param to callback
+            resolve(itemApi)
+          }
+
         } else {
           reject(itemApi)
         }

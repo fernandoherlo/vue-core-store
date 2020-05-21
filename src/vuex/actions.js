@@ -31,8 +31,8 @@ export default {
       ['save' + config.options.nameSingle] ({ commit }, item) {
         return self.saveItem(commit, config, item)
       },
-      ['order' + config.options.nameSingle] ({ commit }, item) {
-        return self.orderItem(commit, config, item)
+      ['order' + config.options.nameSingle] ({ commit }, item_payload) {
+        return self.orderItem(commit, config, item_payload.item, item_payload.id_parent)
       },
       ['upload' + config.options.nameSingle] ({ commit }, item) {
         return self.uploadItem(commit, config, item)

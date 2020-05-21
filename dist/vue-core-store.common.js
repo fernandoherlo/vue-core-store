@@ -3060,9 +3060,9 @@ var web_dom_collections_for_each = __webpack_require__("159b");
     }), _defineProperty(_ref12, 'save' + config.options.nameSingle, function (_ref5, item) {
       var commit = _ref5.commit;
       return self.saveItem(commit, config, item);
-    }), _defineProperty(_ref12, 'order' + config.options.nameSingle, function (_ref6, item) {
+    }), _defineProperty(_ref12, 'order' + config.options.nameSingle, function (_ref6, item_payload) {
       var commit = _ref6.commit;
-      return self.orderItem(commit, config, item);
+      return self.orderItem(commit, config, item_payload.item, item_payload.id_parent);
     }), _defineProperty(_ref12, 'upload' + config.options.nameSingle, function (_ref7, item) {
       var commit = _ref7.commit;
       return self.uploadItem(commit, config, item);

@@ -3233,7 +3233,7 @@ var web_dom_collections_for_each = __webpack_require__("159b");
   |--------------------------------------------------------------------------
   |
   */
-  orderItem: function orderItem(commit, config, item) {
+  orderItem: function orderItem(commit, config, item, id_parent) {
     var _this = this;
 
     // Degub
@@ -3242,7 +3242,11 @@ var web_dom_collections_for_each = __webpack_require__("159b");
     /*, reject*/
     ) {
       var _callback = function _callback() {
-        _this.getBaseAll(commit, config); // Param to callback
+        _this.getBaseAll(commit, config).then(function () {
+          if (id_parent) {
+            _this.getByParent(commit, config, id_parent);
+          }
+        }); // Param to callback
 
 
         resolve();

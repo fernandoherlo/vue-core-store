@@ -162,12 +162,16 @@ export default {
   |--------------------------------------------------------------------------
   |
   */
-  orderItem (commit, config, item) {
+  orderItem (commit, config, item, id_parent) {
     // Degub
     Vue.$log.debug('ACTIONS')
     return new Promise((resolve/*, reject*/) => {
       var _callback = () => {
-        this.getBaseAll(commit, config)
+        this.getBaseAll(commit, config).then( () => {
+          if (id_parent) {
+             this.getByParent(commit, config, id_parent)
+          }
+        })
         // Param to callback
         resolve()
       }

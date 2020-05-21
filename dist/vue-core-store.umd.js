@@ -3253,12 +3253,15 @@ var web_dom_collections_for_each = __webpack_require__("159b");
       var _callback = function _callback() {
         _this.getBaseAll(commit, config).then(function () {
           if (id_parent) {
-            _this.getByParent(commit, config, id_parent);
+            _this.getByParent(commit, config, id_parent).then(function () {
+              // Param to callback
+              resolve();
+            });
+          } else {
+            // Param to callback
+            resolve();
           }
-        }); // Param to callback
-
-
-        resolve();
+        });
       };
 
       external_commonjs_vue_commonjs2_vue_root_Vue_default.a.$EventBus.$emit('apiOrder', config.options.dataUrl, item, _callback);

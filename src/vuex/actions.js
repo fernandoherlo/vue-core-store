@@ -169,11 +169,15 @@ export default {
       var _callback = () => {
         this.getBaseAll(commit, config).then( () => {
           if (id_parent) {
-             this.getByParent(commit, config, id_parent)
+            this.getByParent(commit, config, id_parent).then( () => {
+              // Param to callback
+              resolve()
+            })
+          } else {
+            // Param to callback
+            resolve()
           }
         })
-        // Param to callback
-        resolve()
       }
       Vue.$EventBus.$emit('apiOrder', config.options.dataUrl, item, _callback)
     })

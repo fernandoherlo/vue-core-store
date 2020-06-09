@@ -22,7 +22,7 @@ export default {
       ['GET_BY_PARENT_' + config.options.nameVuex] (state, { id_parent }) {
         self.getAllByParent(state, id_parent)
       },
-      ['GET_BY_PARENT_LARAVEL_' + config.options.nameVuex] (state, config, { id_parent, dataRelatedLaravel, dataIdRelated, dataLoadOnParentForm }) {
+      ['GET_BY_PARENT_LARAVEL_' + config.options.nameVuex] (state, { id_parent, dataRelatedLaravel, dataIdRelated, dataLoadOnParentForm }) {
         let nameVuex = config.options.nameVuex
         self.getAllByParentLaravel(state, nameVuex, id_parent, dataRelatedLaravel, dataIdRelated, dataLoadOnParentForm)
       },

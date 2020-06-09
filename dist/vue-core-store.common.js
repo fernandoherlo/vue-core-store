@@ -3404,7 +3404,7 @@ var es_object_assign = __webpack_require__("cca6");
     }), _defineProperty(_ref9, 'GET_BY_PARENT_' + config.options.nameVuex, function (state, _ref2) {
       var id_parent = _ref2.id_parent;
       self.getAllByParent(state, id_parent);
-    }), _defineProperty(_ref9, 'GET_BY_PARENT_LARAVEL_' + config.options.nameVuex, function (state, config, _ref3) {
+    }), _defineProperty(_ref9, 'GET_BY_PARENT_LARAVEL_' + config.options.nameVuex, function (state, _ref3) {
       var id_parent = _ref3.id_parent,
           dataRelatedLaravel = _ref3.dataRelatedLaravel,
           dataIdRelated = _ref3.dataIdRelated,

@@ -3404,12 +3404,13 @@ var es_object_assign = __webpack_require__("cca6");
     }), _defineProperty(_ref9, 'GET_BY_PARENT_' + config.options.nameVuex, function (state, _ref2) {
       var id_parent = _ref2.id_parent;
       self.getAllByParent(state, id_parent);
-    }), _defineProperty(_ref9, 'GET_BY_PARENT_LARAVEL_' + config.options.nameVuex, function (state, _ref3) {
+    }), _defineProperty(_ref9, 'GET_BY_PARENT_LARAVEL_' + config.options.nameVuex, function (state, config, _ref3) {
       var id_parent = _ref3.id_parent,
           dataRelatedLaravel = _ref3.dataRelatedLaravel,
           dataIdRelated = _ref3.dataIdRelated,
           dataLoadOnParentForm = _ref3.dataLoadOnParentForm;
-      self.getAllByParentLaravel(state, id_parent, dataRelatedLaravel, dataIdRelated, dataLoadOnParentForm);
+      var nameVuex = config.options.nameVuex;
+      self.getAllByParentLaravel(state, nameVuex, id_parent, dataRelatedLaravel, dataIdRelated, dataLoadOnParentForm);
     }), _defineProperty(_ref9, 'GET_' + config.options.nameSingleVuex, function (state, _ref4) {
       var id = _ref4.id;
       self.getItem(state, id);
@@ -3451,7 +3452,7 @@ var es_object_assign = __webpack_require__("cca6");
     });
     external_commonjs_vue_commonjs2_vue_root_Vue_default.a.set(state, 'allByParent', newStates);
   },
-  getAllByParentLaravel: function getAllByParentLaravel(state, id_parent, dataRelatedLaravel, dataIdRelated, dataLoadOnParentForm) {
+  getAllByParentLaravel: function getAllByParentLaravel(state, nameVuex, id_parent, dataRelatedLaravel, dataIdRelated, dataLoadOnParentForm) {
     // Degub
     external_commonjs_vue_commonjs2_vue_root_Vue_default.a.$log.debug('MUTATIONS');
     var newStates = null;
@@ -3484,7 +3485,7 @@ var es_object_assign = __webpack_require__("cca6");
         });
       }
 
-      external_commonjs_vue_commonjs2_vue_root_Vue_default.a.$EventBus.$emit('storeAllByParentSet');
+      external_commonjs_vue_commonjs2_vue_root_Vue_default.a.$EventBus.$emit('storeAllByParentSet' + nameVuex);
     }
 
     external_commonjs_vue_commonjs2_vue_root_Vue_default.a.set(state, 'allByParent', newStates);

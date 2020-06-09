@@ -22,8 +22,9 @@ export default {
       ['GET_BY_PARENT_' + config.options.nameVuex] (state, { id_parent }) {
         self.getAllByParent(state, id_parent)
       },
-      ['GET_BY_PARENT_LARAVEL_' + config.options.nameVuex] (state, { id_parent, dataRelatedLaravel, dataIdRelated, dataLoadOnParentForm }) {
-        self.getAllByParentLaravel(state, id_parent, dataRelatedLaravel, dataIdRelated, dataLoadOnParentForm)
+      ['GET_BY_PARENT_LARAVEL_' + config.options.nameVuex] (state, config, { id_parent, dataRelatedLaravel, dataIdRelated, dataLoadOnParentForm }) {
+        let nameVuex = config.options.nameVuex
+        self.getAllByParentLaravel(state, nameVuex, id_parent, dataRelatedLaravel, dataIdRelated, dataLoadOnParentForm)
       },
       ['GET_' + config.options.nameSingleVuex] (state, { id }) {
         self.getItem(state, id)
@@ -67,7 +68,7 @@ export default {
 
     Vue.set(state, 'allByParent', newStates)
   },
-  getAllByParentLaravel (state, id_parent, dataRelatedLaravel, dataIdRelated, dataLoadOnParentForm) {
+  getAllByParentLaravel (state, nameVuex, id_parent, dataRelatedLaravel, dataIdRelated, dataLoadOnParentForm) {
     // Degub
     Vue.$log.debug('MUTATIONS')
 
@@ -96,7 +97,7 @@ export default {
           return true
         })
       }
-      Vue.$EventBus.$emit('storeAllByParentSet')
+      Vue.$EventBus.$emit('storeAllByParentSet' + nameVuex)
     }
     Vue.set(state, 'allByParent', newStates)
   },
